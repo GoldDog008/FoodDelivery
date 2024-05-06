@@ -1,0 +1,6 @@
+@Ipz_HostAddress = http://localhost:5015
+
+GET {{Ipz_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
