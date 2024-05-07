@@ -1,4 +1,4 @@
-﻿using Ipz.Models.Database;
+﻿using Ipz_server.Models.Database;
 
 namespace Ipz.Services.IServices
 {

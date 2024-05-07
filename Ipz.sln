@@ -3,9 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.9.34728.123
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Ipz", "Ipz\Ipz.csproj", "{F4C5A4EC-54F9-4ED3-9900-187A5D46BF22}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Ipz_server", "Ipz\Ipz_server.csproj", "{F4C5A4EC-54F9-4ED3-9900-187A5D46BF22}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ipz_client", "Ipz_client\Ipz_client.csproj", "{96D92707-D040-4E97-BDE0-E234A5C7281A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Ipz_client", "Ipz_client\Ipz_client.csproj", "{96D92707-D040-4E97-BDE0-E234A5C7281A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

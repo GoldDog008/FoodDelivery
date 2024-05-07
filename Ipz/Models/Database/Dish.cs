@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace Ipz.Models.Database;
+namespace Ipz_server.Models.Database;
 
 public partial class Dish
 {
@@ -9,13 +9,9 @@ public partial class Dish
 
     public string Name { get; set; } = null!;
 
-    public string? Description { get; set; }
-
     public decimal Price { get; set; }
-
-    public Guid RestaurantId { get; set; }
 
     public virtual ICollection<OrderInformation> OrderInformations { get; set; } = new List<OrderInformation>();
 
-    public virtual Restaurant Restaurant { get; set; } = null!;
+    public virtual ICollection<Restaurant> Restaurants { get; set; } = new List<Restaurant>();
 }

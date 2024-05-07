@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using Microsoft.EntityFrameworkCore;
 
-namespace Ipz.Models.Database;
+namespace Ipz_server.Models.Database;
 
 public partial class FoodDeliveryContext : DbContext
 {
@@ -42,19 +42,31 @@ public partial class FoodDeliveryContext : DbContext
             entity.Property(e => e.DishId)
                 .ValueGeneratedNever()
                 .HasColumnName("dish_id");
-            entity.Property(e => e.Description).HasColumnName("description");
             entity.Property(e => e.Name)
                 .HasMaxLength(50)
                 .HasColumnName("name");
             entity.Property(e => e.Price)
                 .HasColumnType("money")
                 .HasColumnName("price");
-            entity.Property(e => e.RestaurantId).HasColumnName("restaurant_id");
 
-            entity.HasOne(d => d.Restaurant).WithMany(p => p.Dishes)
-                .HasForeignKey(d => d.RestaurantId)
-                .OnDelete(DeleteBehavior.ClientSetNull)
-                .HasConstraintName("fk_dishes_restaurant_id");
+            entity.HasMany(d => d.Restaurants).WithMany(p => p.Dishes)
+                .UsingEntity<Dictionary<string, object>>(
+                    "RestaurantsDish",
+                    r => r.HasOne<Restaurant>().WithMany()
+                        .HasForeignKey("RestaurantId")
+                        .OnDelete(DeleteBehavior.ClientSetNull)
+                        .HasConstraintName("fk_restaurants_dishes_restaurant_id"),
+                    l => l.HasOne<Dish>().WithMany()
+                        .HasForeignKey("DishId")
+                        .OnDelete(DeleteBehavior.ClientSetNull)
+                        .HasConstraintName("fk_restaurants_dishes_dish_id"),
+                    j =>
+                    {
+                        j.HasKey("DishId", "RestaurantId").HasName("restaurants_dishes_pkey");
+                        j.ToTable("restaurants_dishes");
+                        j.IndexerProperty<Guid>("DishId").HasColumnName("dish_id");
+                        j.IndexerProperty<Guid>("RestaurantId").HasColumnName("restaurant_id");
+                    });
         });
 
         modelBuilder.Entity<Location>(entity =>
@@ -156,6 +168,8 @@ public partial class FoodDeliveryContext : DbContext
 
             entity.ToTable("restaurants");
 
+            entity.HasIndex(e => e.LocationId, "unique_restaurants_location_id").IsUnique();
+
             entity.Property(e => e.RestaurantId)
                 .ValueGeneratedNever()
                 .HasColumnName("restaurant_id");
@@ -164,8 +178,8 @@ public partial class FoodDeliveryContext : DbContext
                 .HasMaxLength(50)
                 .HasColumnName("name");
 
-            entity.HasOne(d => d.Location).WithMany(p => p.Restaurants)
-                .HasForeignKey(d => d.LocationId)
+            entity.HasOne(d => d.Location).WithOne(p => p.Restaurant)
+                .HasForeignKey<Restaurant>(d => d.LocationId)
                 .OnDelete(DeleteBehavior.ClientSetNull)
                 .HasConstraintName("fk_restaurants_location_id");
         });
@@ -190,6 +204,8 @@ public partial class FoodDeliveryContext : DbContext
 
             entity.ToTable("users");
 
+            entity.HasIndex(e => e.LocationId, "unique_users_location_id").IsUnique();
+
             entity.Property(e => e.UserId)
                 .ValueGeneratedNever()
                 .HasColumnName("user_id");
@@ -211,8 +227,8 @@ public partial class FoodDeliveryContext : DbContext
                 .HasColumnName("phone");
             entity.Property(e => e.RoleId).HasColumnName("role_id");
 
-            entity.HasOne(d => d.Location).WithMany(p => p.Users)
-                .HasForeignKey(d => d.LocationId)
+            entity.HasOne(d => d.Location).WithOne(p => p.User)
+                .HasForeignKey<User>(d => d.LocationId)
                 .HasConstraintName("fk_users_location_id");
 
             entity.HasOne(d => d.Role).WithMany(p => p.Users)

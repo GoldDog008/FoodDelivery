@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace Ipz.Models.Database;
+namespace Ipz_server.Models.Database;
 
 public partial class Restaurant
 {
@@ -11,9 +11,9 @@ public partial class Restaurant
 
     public Guid LocationId { get; set; }
 
-    public virtual ICollection<Dish> Dishes { get; set; } = new List<Dish>();
-
     public virtual Location Location { get; set; } = null!;
 
     public virtual ICollection<Order> Orders { get; set; } = new List<Order>();
+
+    public virtual ICollection<Dish> Dishes { get; set; } = new List<Dish>();
 }

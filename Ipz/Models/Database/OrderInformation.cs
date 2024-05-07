@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace Ipz.Models.Database;
+namespace Ipz_server.Models.Database;
 
 public partial class OrderInformation
 {

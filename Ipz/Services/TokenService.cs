@@ -1,6 +1,7 @@
-﻿using Ipz.Models.Database;
-using Ipz.Services.IServices;
+﻿using Ipz.Services.IServices;
+using Ipz_server.Models.Database;
 using Microsoft.IdentityModel.Tokens;
+using Serilog;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Security.Cryptography;
@@ -10,17 +11,12 @@ namespace Ipz.Services
     public class TokenService : ITokenService
     {
         private readonly IConfiguration _jwt;
-        private readonly FoodDeliveryContext _context;
-        private readonly ILogger<TokenService> _logger;
 
-        public TokenService(IConfiguration configuration,
-            ILogger<TokenService> logger,
-            FoodDeliveryContext context)
+        public TokenService(IConfiguration configuration)
         {
             _jwt = configuration.GetSection("JWT");
-            _logger = logger;
-            _context = context;
         }
+
         public string CreateAccessToken(User user)
         {
             try
@@ -53,7 +49,7 @@ namespace Ipz.Services
             }
             catch (Exception ex)
             {
-                _logger.LogError(ex, "Error while creating access token");
+                Log.Error(ex, "Error while creating access token");
                 throw;
             }
         }

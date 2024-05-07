@@ -1,19 +1,19 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace Ipz.Models.Database;
+namespace Ipz_server.Models.Database;
 
 public partial class Location
 {
     public Guid LocationId { get; set; }
 
-    public string Country { get; set; } = null!;
+    public string? Country { get; set; }
 
-    public string City { get; set; } = null!;
+    public string? City { get; set; }
 
-    public string Street { get; set; } = null!;
+    public string? Street { get; set; }
 
-    public virtual ICollection<Restaurant> Restaurants { get; set; } = new List<Restaurant>();
+    public virtual Restaurant? Restaurant { get; set; }
 
-    public virtual ICollection<User> Users { get; set; } = new List<User>();
+    public virtual User? User { get; set; }
 }
