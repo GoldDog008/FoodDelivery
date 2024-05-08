@@ -12,6 +12,7 @@ namespace Ipz_server.Models.Dto.Dishes
         public string Name { get; set; } = null!;
 
         [Required]
+        [Range(1, 9999)]
         public decimal Price { get; set; }
     }
 }

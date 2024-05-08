@@ -32,7 +32,16 @@ namespace Ipz
                 .ForMember(dest => dest.Street, opt => opt.MapFrom(src => src.Location.Street))
                 .ForMember(dest => dest.Dishes, opt => opt.MapFrom(src => src.Dishes))
                 .ReverseMap();
+
             
+            CreateMap<OrderInformation, OrderInformationResponseDto>()
+                .ForMember(dest => dest.DishName, opt => opt.MapFrom(src => src.Dish.Name))
+                .ReverseMap();
+
+            CreateMap<Order, OrderResponseDto>()
+                .ForMember(dest => dest.RestaurantName, opt => opt.MapFrom(src => src.Restaurant.Name))
+                .ReverseMap();
+
             CreateMap<Dish, DishToRestaurantRequestDto>().ReverseMap();
             CreateMap<Dish, DishResponseDto>().ReverseMap();
             CreateMap<RestaurantCreateRequestDto, LocationCreateRequestDto>().ReverseMap();

@@ -37,6 +37,7 @@ namespace Ipz
             builder.Services.AddScoped<IUserService, UserService>();
             builder.Services.AddScoped<IRestaurantService, RestaurantService>();
             builder.Services.AddScoped<IDishService, DishService>();
+            builder.Services.AddScoped<IOrderService, OrderService>();
 
 
             var publicKey = builder.Configuration.GetValue<string>("JWT:PublicKey");

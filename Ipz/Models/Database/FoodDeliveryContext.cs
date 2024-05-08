@@ -23,8 +23,6 @@ public partial class FoodDeliveryContext : DbContext
 
     public virtual DbSet<OrderInformation> OrderInformations { get; set; }
 
-    public virtual DbSet<OrderStatus> OrderStatuses { get; set; }
-
     public virtual DbSet<Restaurant> Restaurants { get; set; }
 
     public virtual DbSet<Role> Roles { get; set; }
@@ -99,19 +97,13 @@ public partial class FoodDeliveryContext : DbContext
                 .ValueGeneratedNever()
                 .HasColumnName("order_id");
             entity.Property(e => e.CreatedAt)
-                .HasColumnType("time with time zone")
+                .HasColumnType("timestamp without time zone")
                 .HasColumnName("created_at");
-            entity.Property(e => e.OrderStatuseId).HasColumnName("order_statuse_id");
             entity.Property(e => e.RestaurantId).HasColumnName("restaurant_id");
             entity.Property(e => e.TotalAmount)
                 .HasColumnType("money")
                 .HasColumnName("total_amount");
             entity.Property(e => e.UserId).HasColumnName("user_id");
-
-            entity.HasOne(d => d.OrderStatuse).WithMany(p => p.Orders)
-                .HasForeignKey(d => d.OrderStatuseId)
-                .OnDelete(DeleteBehavior.ClientSetNull)
-                .HasConstraintName("fk_orders_statuse_id");
 
             entity.HasOne(d => d.Restaurant).WithMany(p => p.Orders)
                 .HasForeignKey(d => d.RestaurantId)
@@ -146,20 +138,6 @@ public partial class FoodDeliveryContext : DbContext
                 .HasForeignKey(d => d.OrderId)
                 .OnDelete(DeleteBehavior.ClientSetNull)
                 .HasConstraintName("fk_order_informations_order_id");
-        });
-
-        modelBuilder.Entity<OrderStatus>(entity =>
-        {
-            entity.HasKey(e => e.OrderStatuseId).HasName("order_statuses_pkey");
-
-            entity.ToTable("order_statuses");
-
-            entity.Property(e => e.OrderStatuseId)
-                .ValueGeneratedNever()
-                .HasColumnName("order_statuse_id");
-            entity.Property(e => e.Name)
-                .HasColumnType("character varying")
-                .HasColumnName("name");
         });
 
         modelBuilder.Entity<Restaurant>(entity =>

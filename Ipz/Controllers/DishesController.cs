@@ -18,6 +18,24 @@ namespace Ipz_server.Controllers
             _dishService = dishService;
         }
 
+        [HttpGet("{restaurantId}")]
+        [Authorize]
+        public async Task<IActionResult> GetAllDishes(Guid restaurantId)
+        {
+            try
+            {
+                var response = await _dishService.GetAllDishesByRestaurantIdAsync(restaurantId);
+                Log.Information($"Dishes was requested");
+
+                return Ok(response);
+            }
+            catch (Exception ex)
+            {
+                Log.Error(ex, "Error while creating dish");
+                return StatusCode(500, "Internal server error");
+            }
+        }
+
         [HttpPost]
         [Authorize(Roles = "Admin")]
         public async Task<IActionResult> AddDishToRestaurant([FromBody] DishToRestaurantRequestDto request)

@@ -7,5 +7,6 @@ namespace Ipz_server.Services.IServices
     {
         public Task<ApiResponse> GetDishByIdAsync(Guid id);
         public Task<ApiResponse> AddDishToRestaurant(DishToRestaurantRequestDto request);
+        public Task<ApiResponse> GetAllDishesByRestaurantIdAsync(Guid id);
     }
 }

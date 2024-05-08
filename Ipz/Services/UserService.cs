@@ -108,6 +108,53 @@ namespace Ipz_server.Services
             }
         }
 
+        public async Task<ApiResponse> IsAllDataFilledInAsync(Guid id)
+        {
+            try
+            {
+                var user = await _context.Users
+                    .AsNoTracking()
+                    .Include(l => l.Location)
+                    .FirstOrDefaultAsync(u => u.UserId == id);
+
+                if (user == null)
+                {
+                    return new ApiResponse
+                    {
+                        Success = false,
+                        Errors = new List<string> { "User not found" }
+                    };
+                }
+
+                if (user.FirstName == null ||
+                    user.LastName == null ||
+                    user.Email == null ||
+                    user.Phone == null ||
+                    user.Location == null ||
+                    user.Location.City == null ||
+                    user.Location.Country == null ||
+                    user.Location.Street == null)
+                {
+                    return new ApiResponse
+                    {
+                        Success = false,
+                        Errors = new List<string> { "Not all data is filled in" }
+                    };
+                }
+
+                return new ApiResponse
+                {
+                    Success = true
+                };
+
+            }
+            catch (Exception ex)
+            {
+                Log.Error(ex, "Error while checking if all data is filled in");
+                throw;
+            }
+        }
+
         public async Task<ApiResponse> SaveUserToFile(User user)
         {
             try

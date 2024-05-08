@@ -55,6 +55,44 @@ namespace Ipz_server.Services
             }
         }
 
+        public async Task<ApiResponse> GetAllDishesByRestaurantIdAsync(Guid id)
+        { 
+            var apiResponse = new ApiResponse();
+
+            try
+            {
+                var dishes = await _context.Dishes
+                    .AsNoTracking()
+                    .Include(r => r.Restaurants)
+                    .Where(d => d.Restaurants.Any(r => r.RestaurantId == id))
+                    .ToListAsync();
+
+                if (dishes == null)
+                {
+                    apiResponse.Success = false;
+                    apiResponse.Errors.Add("Dishes not found");
+
+                    return apiResponse;
+                }
+
+                List<DishResponseDto> dishResponse = [];
+                foreach (var dish in dishes)
+                {
+                    dishResponse.Add(_mapper.Map<DishResponseDto>(dish));
+                }
+
+                apiResponse.Success = true;
+                apiResponse.Data = dishResponse;
+
+                return apiResponse;
+            }
+            catch (Exception ex)
+            {
+                Log.Error(ex, "Error while getting dishes");
+                throw;
+            }
+        }
+
         public async Task<ApiResponse> AddDishToRestaurant(DishToRestaurantRequestDto request)
         {
             var apiResponse = new ApiResponse();
@@ -74,6 +112,17 @@ namespace Ipz_server.Services
                     .Include(d => d.Restaurants)
                     .FirstOrDefaultAsync(d => d.Name == request.Name);
 
+                var restaurant = await _context.Restaurants
+                    .FirstOrDefaultAsync(r => request.RestaurantId == r.RestaurantId);
+
+                if (restaurant == null)
+                {
+                    apiResponse.Success = false;
+                    apiResponse.Errors.Add("Restaurant not found");
+
+                    return apiResponse;
+                }
+
                 if (dish != null)
                 {
                     var dishAlreadyExistsInRestaurant = await _context.Dishes
@@ -86,13 +135,19 @@ namespace Ipz_server.Services
 
                         return apiResponse;
                     }
+
+                    dish.Restaurants.Add(restaurant);
+                    await _context.SaveChangesAsync();
+
+                    var dishResponses = _mapper.Map<DishResponseDto>(dish);
+                    apiResponse.Success = true;
+                    apiResponse.Data = dishResponses;
+
+                    return apiResponse;
                 }                
 
                 dish = _mapper.Map<Dish>(request);
                 dish.DishId = Guid.NewGuid();
-
-                var restaurant = await _context.Restaurants
-                    .FirstOrDefaultAsync(r => request.RestaurantId == r.RestaurantId);
 
                 dish.Restaurants.Add(restaurant);
 
