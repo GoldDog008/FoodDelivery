@@ -1,4 +1,5 @@
-﻿using System.Text;
+﻿using Ipz_client.Models.Request.Auth;
+using System.Text;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
@@ -19,6 +20,15 @@ namespace Ipz_client
         public MainWindow()
         {
             //InitializeComponent();
+        }
+
+        private void SignIn_Click(object sender, RoutedEventArgs e)
+        {
+            var loginRequest = new LoginRequestDto
+            {
+                Email = Email.Text,
+                Password = Password.Password
+            };
         }
     }
 }

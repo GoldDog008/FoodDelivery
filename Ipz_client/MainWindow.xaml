@@ -5,8 +5,39 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Ipz_client"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
-    <Grid>
+        Title="Login" Height="300" Width="500">
+    <Window.Background>
+        <ImageBrush ImageSource="C:\Users\HP\source\repos\Ipz\Ipz_client\images\login_background.jpg"></ImageBrush>
+    </Window.Background>
+    <Grid x:Name="Login" >
+        <Label Content="Sign In" FontSize="50" Foreground="White" HorizontalAlignment="Left" Margin="19,9,0,0" VerticalAlignment="Top" FontFamily="HP Simplified Jpan"/>
+        <Button x:Name="SignIn" Content="Sign in" HorizontalAlignment="Left" Margin="55,208,0,0" VerticalAlignment="Top" Width="148" Height="25" Background="#1E1E1E" Foreground="White" FontFamily="HP Simplified Jpan" FontSize="16" Click="SignIn_Click">
+            <Button.Resources>
+                <Style TargetType="Border">
+                    <Setter Property="CornerRadius" Value="14"/>
+                </Style>
+            </Button.Resources>
+        </Button>
 
+        <TextBox x:Name="Email" HorizontalAlignment="Left" Margin="19,101,0,0" VerticalAlignment="Top" Width="220" Height="25" FontSize="14" TextWrapping="Wrap">
+            <TextBox.Resources>
+                <Style TargetType="Border">
+                    <Setter Property="CornerRadius" Value="14"/>
+                </Style>
+            </TextBox.Resources>
+        </TextBox>
+
+        <Label Content="Email" Foreground="White" FontSize="15" HorizontalAlignment="Left" Margin="19,76,0,0" VerticalAlignment="Top" FontFamily="Bookman Old Style" FontStyle="Italic"/>
+
+        <Label Content="Password" Foreground="White" FontSize="15" HorizontalAlignment="Left" Margin="19,131,0,0" VerticalAlignment="Top" FontFamily="Bookman Old Style" FontStyle="Italic"/>
+
+        <PasswordBox x:Name="Password" HorizontalAlignment="Left" Margin="19,159,0,0" VerticalAlignment="Top" Width="220" Height="25">
+            <PasswordBox.Resources>
+                <Style TargetType="Border">
+                    <Setter Property="CornerRadius" Value="17"/>
+                </Style>
+            </PasswordBox.Resources>
+        </PasswordBox>
     </Grid>
 </Window>
+    
