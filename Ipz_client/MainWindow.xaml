@@ -5,13 +5,15 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Ipz_client"
         mc:Ignorable="d"
-        Title="Login" Height="300" Width="500">
+        Title="Login" Height="320" Width="500">
+
     <Window.Background>
         <ImageBrush ImageSource="C:\Users\HP\source\repos\Ipz\Ipz_client\images\login_background.jpg"></ImageBrush>
     </Window.Background>
     <Grid x:Name="Login" >
         <Label Content="Sign In" FontSize="50" Foreground="White" HorizontalAlignment="Left" Margin="19,9,0,0" VerticalAlignment="Top" FontFamily="HP Simplified Jpan"/>
-        <Button x:Name="SignIn" Content="Sign in" HorizontalAlignment="Left" Margin="55,208,0,0" VerticalAlignment="Top" Width="148" Height="25" Background="#1E1E1E" Foreground="White" FontFamily="HP Simplified Jpan" FontSize="16" Click="SignIn_Click">
+
+        <Button x:Name="SignIn" Command="{Binding LoginCommand}" CommandParameter="{Binding ElementName=Password}" Content="Sign in" HorizontalAlignment="Left" Margin="55,208,0,0" VerticalAlignment="Top" Width="148" Height="25" Background="#1E1E1E" Foreground="White" FontFamily="HP Simplified Jpan" FontSize="16">
             <Button.Resources>
                 <Style TargetType="Border">
                     <Setter Property="CornerRadius" Value="14"/>
@@ -19,7 +21,7 @@
             </Button.Resources>
         </Button>
 
-        <TextBox x:Name="Email" HorizontalAlignment="Left" Margin="19,101,0,0" VerticalAlignment="Top" Width="220" Height="25" FontSize="14" TextWrapping="Wrap">
+        <TextBox x:Name="Email" Text="{Binding LoginRequestDto.Email}" HorizontalAlignment="Left" Margin="19,101,0,0" VerticalAlignment="Top" Width="220" Height="25" FontSize="14" TextWrapping="Wrap">
             <TextBox.Resources>
                 <Style TargetType="Border">
                     <Setter Property="CornerRadius" Value="14"/>
@@ -31,13 +33,21 @@
 
         <Label Content="Password" Foreground="White" FontSize="15" HorizontalAlignment="Left" Margin="19,131,0,0" VerticalAlignment="Top" FontFamily="Bookman Old Style" FontStyle="Italic"/>
 
-        <PasswordBox x:Name="Password" HorizontalAlignment="Left" Margin="19,159,0,0" VerticalAlignment="Top" Width="220" Height="25">
+        <PasswordBox x:Name="Password"  HorizontalAlignment="Left" Margin="19,159,0,0" VerticalAlignment="Top" Width="220" Height="25">
             <PasswordBox.Resources>
                 <Style TargetType="Border">
                     <Setter Property="CornerRadius" Value="17"/>
                 </Style>
             </PasswordBox.Resources>
         </PasswordBox>
+
+        <Button x:Name="Registration" Command="{Binding ShowRegistrationWindowCommand}" Content="Registration" HorizontalAlignment="Left" Margin="75,238,0,0" VerticalAlignment="Top" Width="108" Height="25" Background="#1E1E1E" Foreground="White" FontFamily="HP Simplified Jpan" FontSize="14">
+            <Button.Resources>
+                <Style TargetType="{x:Type Border}">
+                    <Setter Property="CornerRadius" Value="14"/>
+                </Style>
+            </Button.Resources>
+        </Button>
     </Grid>
 </Window>
     
