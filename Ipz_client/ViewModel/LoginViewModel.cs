@@ -1,16 +1,19 @@
 ﻿using Ipz_client.Commands;
 using Ipz_client.Models.Request.Auth;
 using Ipz_client.Views;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
+using System.Net.Http;
 using System.Reflection.Metadata;
 using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 using System.Security;
 using System.Security.Cryptography;
+using System.Security.Policy;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -29,7 +32,7 @@ namespace Ipz_client.ViewModel
         public LoginViewModel()
         {
             ShowRegistrationWindowCommand = new RelayCommand(ShowRegistrationWindowExecute, ShowRegistrationWindowCanExecute);
-            LoginCommand = new RelayCommand(LoginExecute, LoginCanExecute);
+            LoginCommand = new RelayCommand(LoginExecuteAsync, LoginCanExecute);
         }
 
         public bool IsLoginRequestValid()
@@ -46,7 +49,7 @@ namespace Ipz_client.ViewModel
             return true;
         }
 
-        private void LoginExecute(object obj)
+        private async void LoginExecuteAsync(object obj)
         {
             PasswordBox box = (PasswordBox)obj;
             LoginRequestDto.Password = box.Password;
@@ -61,6 +64,10 @@ namespace Ipz_client.ViewModel
             //https://localhost:7067/
             //POST /api/auth/login
 
+            var data = JsonConvert.SerializeObject(LoginRequestDto);
+
+            HttpClient client = new HttpClient();
+            HttpResponseMessage response = await client.GetAsync(Paths.Login);
         }
 
         private bool ShowRegistrationWindowCanExecute(object obj)
