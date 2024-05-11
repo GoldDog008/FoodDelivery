@@ -41,13 +41,15 @@
             </PasswordBox.Resources>
         </PasswordBox>
 
-        <Button x:Name="Registration" Command="{Binding ShowRegistrationWindowCommand}" Content="Registration" HorizontalAlignment="Left" Margin="75,238,0,0" VerticalAlignment="Top" Width="108" Height="25" Background="#1E1E1E" Foreground="White" FontFamily="HP Simplified Jpan" FontSize="14">
+        <Button x:Name="Registration" Command="{Binding UpdateViewCommand}" CommandParameter="Registration" Content="Registration" HorizontalAlignment="Left" Margin="75,238,0,0" VerticalAlignment="Top" Width="108" Height="25" Background="#1E1E1E" Foreground="White" FontFamily="HP Simplified Jpan" FontSize="14">
             <Button.Resources>
                 <Style TargetType="{x:Type Border}">
                     <Setter Property="CornerRadius" Value="14"/>
                 </Style>
             </Button.Resources>
         </Button>
+
+        <ContentControl Content="{Binding SelectedViewModel}"/>
     </Grid>
 </Window>
     
