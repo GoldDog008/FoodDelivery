@@ -8,7 +8,7 @@
         Title="Login" Height="320" Width="500">
 
     <Window.Background>
-        <ImageBrush ImageSource="C:\Users\HP\source\repos\Ipz\Ipz_client\images\login_background.jpg"></ImageBrush>
+        <ImageBrush ImageSource="pack://application:,,,/Ipz_client;component/images/login_background.jpg"></ImageBrush>
     </Window.Background>
     <Grid x:Name="Login" >
         <Label Content="Sign In" FontSize="50" Foreground="White" HorizontalAlignment="Left" Margin="19,9,0,0" VerticalAlignment="Top" FontFamily="HP Simplified Jpan"/>
