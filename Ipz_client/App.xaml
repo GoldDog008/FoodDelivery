@@ -2,8 +2,14 @@
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:local="clr-namespace:Ipz_client"
-             StartupUri="MainWindow.xaml">
+             xmlns:view="clr-namespace:Ipz_client.Views"
+             xmlns:viewmodels="clr-namespace:Ipz_client.ViewModel"
+             StartupUri="views/LoginWindow.xaml">
     <Application.Resources>
-         
+        
+        <DataTemplate DataType="{x:Type viewmodels:RegistrationViewModel}">
+            <view:RegistrationWindow/>
+        </DataTemplate>
+        
     </Application.Resources>
 </Application>

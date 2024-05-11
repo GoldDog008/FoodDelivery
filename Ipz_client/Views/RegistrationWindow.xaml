@@ -1,12 +1,14 @@
-﻿<Window x:Class="Ipz_client.Views.RegistrationWindow"
-        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:Ipz_client.Views"
-        mc:Ignorable="d"
-        Title="RegistrationWindow" Height="450" Width="800">
-    <Grid>
-        
+﻿<UserControl x:Class="Ipz_client.Views.RegistrationWindow"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Ipz_client.Views"
+             mc:Ignorable="d"
+             Height="320" Width="500">
+    
+    <Grid OpacityMask="#FFD02323" Background="#FFFF0505">
+        <Button Content="Button" HorizontalAlignment="Left" Margin="29,20,0,0" VerticalAlignment="Top"/>
+
     </Grid>
-</Window>
+</UserControl>
