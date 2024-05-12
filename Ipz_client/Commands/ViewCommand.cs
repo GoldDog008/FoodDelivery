@@ -10,14 +10,29 @@ namespace Ipz_client.Commands
 {
     internal class ViewCommand : ICommand
     {
-        private LoginViewModel _loginViewModel;
         public event EventHandler CanExecuteChanged;
+
+        private LoginViewModel _loginViewModel;
+        private RegistrationViewModel _registrationViewModel;
+        private NewOrderViewModel _newOrderViewModel;
+        private ProfileViewModel _profileViewModel;
 
         public ViewCommand(LoginViewModel loginViewModel)
         {
             _loginViewModel = loginViewModel;
         }
-
+        public ViewCommand(RegistrationViewModel registrationViewModel)
+        {
+            _registrationViewModel = registrationViewModel;
+        }
+        public ViewCommand(NewOrderViewModel newOrderViewModel)
+        {
+            _newOrderViewModel = newOrderViewModel;
+        }
+        public ViewCommand(ProfileViewModel profileViewModel)
+        {
+            _profileViewModel = profileViewModel;
+        }
         public bool CanExecute(object parameter)
         {
             return true;
@@ -25,14 +40,23 @@ namespace Ipz_client.Commands
 
         public void Execute(object parameter)
         {
-            if (parameter.ToString() == "Registration")
+            var param = parameter.ToString();
+            switch (param)
             {
-                _loginViewModel.SelectedViewModel = new RegistrationViewModel();
-            }
-            else if (parameter.ToString() == "Login")
-            {
-                _loginViewModel.SelectedViewModel = new LoginViewModel();
+                case "Registration":
+                    _loginViewModel.SelectedViewModel = new RegistrationViewModel();
+                    break;
+                case "Login":
+                    _registrationViewModel.SelectedViewModel = new LoginViewModel();
+                    break;
+                case "NewOrder":
+                    _profileViewModel.SelectedViewModel = new NewOrderViewModel();
+                    break;
+                case "Profile":
+                    _newOrderViewModel.SelectedViewModel = new ProfileViewModel();
+                    break;
             }
         }
+
     }
 }

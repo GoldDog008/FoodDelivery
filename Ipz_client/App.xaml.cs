@@ -1,6 +1,5 @@
-﻿using System.Configuration;
-using System.Data;
-using System.Windows;
+﻿using System.Windows;
+using Ipz_client.Views;
 
 namespace Ipz_client
 {
@@ -9,6 +8,17 @@ namespace Ipz_client
     /// </summary>
     public partial class App : Application
     {
+        protected override void OnStartup(StartupEventArgs e)
+        {
+            base.OnStartup(e);
+
+            MainWindow mainWindow = new MainWindow();
+
+            mainWindow.Content = new NewOrderWindow();  
+
+            mainWindow.Title = "Главное окно";
+            mainWindow.Show();
+        }
     }
 
 }

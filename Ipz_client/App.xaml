@@ -3,13 +3,21 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:local="clr-namespace:Ipz_client"
              xmlns:view="clr-namespace:Ipz_client.Views"
-             xmlns:viewmodels="clr-namespace:Ipz_client.ViewModel"
-             StartupUri="views/LoginWindow.xaml">
+             xmlns:viewmodels="clr-namespace:Ipz_client.ViewModel">
     <Application.Resources>
-        
+
         <DataTemplate DataType="{x:Type viewmodels:RegistrationViewModel}">
             <view:RegistrationWindow/>
         </DataTemplate>
-        
+        <DataTemplate DataType="{x:Type viewmodels:LoginViewModel}">
+            <view:LoginWindow/>
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type viewmodels:NewOrderViewModel}">
+            <view:NewOrderWindow/>
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type viewmodels:ProfileViewModel}">
+            <view:ProfileWindow/>
+        </DataTemplate>
+
     </Application.Resources>
 </Application>

@@ -33,11 +33,9 @@ namespace Ipz_client.ViewModel
 
         public ICommand LoginCommand { get; set; }
         public ICommand UpdateViewCommand { get; set; }
-        public ICommand ShowRegistrationWindowCommand { get; set; }
 
         public LoginViewModel()
         {
-            ShowRegistrationWindowCommand = new RelayCommand(ShowRegistrationWindowExecute, ShowRegistrationWindowCanExecute);
             LoginCommand = new RelayCommand(LoginExecuteAsync, LoginCanExecute);
             UpdateViewCommand = new ViewCommand(this);
         }
@@ -95,36 +93,12 @@ namespace Ipz_client.ViewModel
                 var userJson = apiResponse.Data.ToString();
                 var user = JsonConvert.DeserializeObject<UserAuthResponseDto>(userJson);
 
-                SetCurrentUser(user);
+                CurrentUser.SetCurrentUser(user);
             }
             else
             {
                 MessageBox.Show(apiResponse.Errors.First());
             }
-        }
-
-        private static void SetCurrentUser(UserAuthResponseDto user)
-        {
-            CurrentUser.UserId = user.UserId;
-            CurrentUser.FirstName = user.FirstName;
-            CurrentUser.LastName = user.LastName;
-            CurrentUser.Email = user.Email;
-            CurrentUser.Phone = user.Phone;
-            CurrentUser.Country = user.Country;
-            CurrentUser.City = user.City;
-            CurrentUser.Street = user.Street;
-            CurrentUser.AccessToken = user.AccessToken;
-        }
-
-        private bool ShowRegistrationWindowCanExecute(object obj)
-        {
-            return true;
-        }
-
-        private void ShowRegistrationWindowExecute(object obj)
-        {
-            //RegistrationWindow registrationWindow = new RegistrationWindow();
-            //registrationWindow.Show();
         }
     }
 }

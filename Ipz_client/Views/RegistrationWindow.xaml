@@ -4,11 +4,84 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:Ipz_client.Views"
+             xmlns:design="clr-namespace:Ipz_client.Design"
              mc:Ignorable="d"
-             Height="320" Width="500">
-    
-    <Grid OpacityMask="#FFD02323" Background="#FFFF0505">
-        <Button Content="Button" HorizontalAlignment="Left" Margin="29,20,0,0" VerticalAlignment="Top"/>
+             Height="400" Width="700">
+    <UserControl.Resources>
+        <Style TargetType="TextBox">
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="TextBox">
+                        <Border Background="{TemplateBinding Background}"
+                                BorderBrush="{TemplateBinding BorderBrush}"
+                                BorderThickness="{TemplateBinding BorderThickness}"
+                                CornerRadius="10">
+                            <ScrollViewer x:Name="PART_ContentHost" Padding="{TemplateBinding Padding}"/>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+        <Style TargetType="PasswordBox">
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="PasswordBox">
+                        <Border Background="{TemplateBinding Background}"
+                                BorderBrush="{TemplateBinding BorderBrush}"
+                                BorderThickness="{TemplateBinding BorderThickness}"
+                                CornerRadius="10">
+                            <ScrollViewer x:Name="PART_ContentHost" Padding="{TemplateBinding Padding}" />
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </UserControl.Resources>
+    <Grid>
+        <Grid.Background>
+            <ImageBrush ImageSource="pack://application:,,,/Ipz_client;component/images/registration_background.jpg" Stretch="Fill"/>
+        </Grid.Background>
 
+        <Border Background="Gray" Height="25" Margin="0,0,0,374" MouseLeftButtonDown="Border_MouseLeftButtonDown">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="Auto" />
+                </Grid.ColumnDefinitions>
+
+                <TextBlock Text="Kasl" VerticalAlignment="Center" Margin="5,0,0,0" FontWeight="Bold" FontSize="15"/>
+
+                <StackPanel Grid.Column="1" Orientation="Horizontal">
+                    <Button Content="─" Click="Minimize_Click" Width="35" Height="25" />
+                    <Button Content="X" Click="Close_Click" Foreground="Gray" Width="35" Height="25"/>
+                </StackPanel>
+            </Grid>
+        </Border>
+        <design:OutlinedTextBlock Text="Registration" StrokeThickness="2" Fill="White" Stroke="Red" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="243,44,0,0"/>
+        <TextBox x:Name="Arka" HorizontalAlignment="Left" Margin="465,100,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="177" Height="24" VerticalContentAlignment="Center"/>
+        <TextBox HorizontalAlignment="Left" Margin="465,152,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="177" Height="24" VerticalContentAlignment="Center"/>
+        <TextBox HorizontalAlignment="Left" Margin="465,202,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="177" Height="24" VerticalContentAlignment="Center"/>
+        <PasswordBox Margin="465,252,58,120" Width="177" Height="24" VerticalContentAlignment="Center"/>
+        <PasswordBox Margin="465,302,58,71" Width="177" Height="24" VerticalContentAlignment="Center"/>
+        <Label Content="Email" HorizontalAlignment="Left" Margin="465,73,0,0" VerticalAlignment="Top" Foreground="White" FontFamily="Bookman Old Style" FontStyle="Italic" FontSize="12" Height="27" Width="68" RenderTransformOrigin="0.482,0.812"/>
+        <Label Content="First Name" HorizontalAlignment="Left" Margin="465,125,0,0" VerticalAlignment="Top" Foreground="White" FontFamily="Bookman Old Style" FontStyle="Italic" FontSize="12" Height="27" Width="115" RenderTransformOrigin="0.482,0.812"/>
+        <Label Content="Last Name" HorizontalAlignment="Left" Margin="465,175,0,0" VerticalAlignment="Top" Foreground="White" FontFamily="Bookman Old Style" FontStyle="Italic" FontSize="12" Height="27" Width="115" RenderTransformOrigin="0.482,0.812"/>
+        <Label Content="Passwort" HorizontalAlignment="Left" Margin="465,227,0,0" VerticalAlignment="Top" Foreground="White" FontFamily="Bookman Old Style" FontStyle="Italic" FontSize="12" Height="27" Width="107" RenderTransformOrigin="0.482,0.812"/>
+        <Label Content="Re-enter Passwort" HorizontalAlignment="Left" Margin="465,278,0,0" VerticalAlignment="Top" Foreground="White" FontFamily="Bookman Old Style" FontStyle="Italic" FontSize="12" Height="27" Width="172" RenderTransformOrigin="0.482,0.812"/>
+        <Button x:Name="SignUp" Content="Sign up" HorizontalAlignment="Left" Margin="442,347,0,0" VerticalAlignment="Top" Width="218" Height="33" Background="#1E1E1E" Foreground="White" FontFamily="HP Simplified Jpan" FontSize="16">
+            <Button.Resources>
+                <Style TargetType="Border">
+                    <Setter Property="CornerRadius" Value="14"/>
+                </Style>
+            </Button.Resources>
+        </Button>
+        <Button x:Name="Back" Content="Back" HorizontalAlignment="Left" Margin="615,30,0,0" VerticalAlignment="Top" Width="75" Height="28" Background="#1E1E1E" Foreground="White" FontFamily="HP Simplified Jpan" FontSize="16" Command="{Binding UpdateViewCommand}" CommandParameter="Login">
+            <Button.Resources>
+                <Style TargetType="Border">
+                    <Setter Property="CornerRadius" Value="14"/>
+                </Style>
+            </Button.Resources>
+        </Button>
+        <ContentControl Content="{Binding SelectedViewModel}"/>
     </Grid>
 </UserControl>

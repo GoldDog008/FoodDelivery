@@ -1,28 +1,46 @@
-﻿using Ipz_client.Models.Request.Auth;
-using Ipz_client.ViewModel;
-using System.Text;
+﻿using Ipz_client.ViewModel;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
-namespace Ipz_client
+namespace Ipz_client.Views
 {
     /// <summary>
-    /// Interaction logic for MainWindow.xaml
+    /// Interaction logic for LoginWindow.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class LoginWindow : UserControl
     {
-        public MainWindow()
+        public LoginWindow()
         {
             InitializeComponent();
 
             DataContext = new LoginViewModel();
+        }
+
+        private void Close_Click(object sender, RoutedEventArgs e)
+        {
+            var window = Window.GetWindow(this);
+            if (window != null)
+            {
+                window.Close();
+            }
+        }
+
+        private void Minimize_Click(object sender, RoutedEventArgs e)
+        {
+            var window = Window.GetWindow(this);
+            if (window != null)
+            {
+                window.WindowState = WindowState.Minimized;
+            }
+        }
+        private void Border_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            var window = Window.GetWindow(this);
+            if (window != null)
+            {
+                window.DragMove();
+            }
         }
     }
 }

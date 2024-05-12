@@ -2,7 +2,7 @@
 
   <PropertyGroup>
     <OutputType>WinExe</OutputType>
-    <TargetFramework>net8.0-windows</TargetFramework>
+    <TargetFramework>net8.0-windows7.0</TargetFramework>
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
     <UseWPF>true</UseWPF>
@@ -10,7 +10,21 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Views - Копировать\**" />
+    <EmbeddedResource Remove="Views - Копировать\**" />
+    <None Remove="Views - Копировать\**" />
+    <Page Remove="Views - Копировать\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <None Remove="images\login_background.jpg" />
+    <None Remove="images\newOrder_background.jpg" />
+    <None Remove="images\profile_background.jpg" />
+    <None Remove="images\registration_background.jpg" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="Views\.vs\slnx.sqlite" />
   </ItemGroup>
 
   <ItemGroup>
@@ -24,6 +38,15 @@
 
   <ItemGroup>
     <Resource Include="images\login_background.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="images\newOrder_background.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="images\profile_background.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="images\registration_background.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>
   </ItemGroup>

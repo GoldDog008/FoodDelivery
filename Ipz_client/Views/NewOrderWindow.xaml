@@ -1,0 +1,109 @@
+﻿<UserControl x:Class="Ipz_client.Views.NewOrderWindow"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Ipz_client.Views"
+             xmlns:design="clr-namespace:Ipz_client.Design"
+             mc:Ignorable="d" 
+             Height="400" Width="700">
+    <UserControl.Resources>
+        <Style TargetType="TextBox">
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="TextBox">
+                        <Border Background="{TemplateBinding Background}"
+                            BorderBrush="{TemplateBinding BorderBrush}"
+                            BorderThickness="{TemplateBinding BorderThickness}"
+                            CornerRadius="14">
+                            <ScrollViewer x:Name="PART_ContentHost" Padding="{TemplateBinding Padding}"/>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </UserControl.Resources>
+    <Grid>
+        <Grid.Background>
+            <ImageBrush ImageSource="pack://application:,,,/images/neworder_background.jpg" Stretch="Fill"/>
+        </Grid.Background>
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Border Background="Gray" Height="25" Margin="0,0,0,297" MouseLeftButtonDown="Border_MouseLeftButtonDown">
+            <Grid Margin="2,0,-2,0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="Auto" />
+                </Grid.ColumnDefinitions>
+
+                <TextBlock Text="Kasl" VerticalAlignment="Center" Margin="5,0,0,0" FontWeight="Bold" FontSize="15"/>
+
+                <StackPanel Grid.Column="1" Orientation="Horizontal">
+                    <Button Content="─" Click="Minimize_Click" Width="35" Height="25" />
+                    <Button Content="X" Click="Close_Click" Foreground="Gray" Width="35" Height="25"/>
+                </StackPanel>
+            </Grid>
+        </Border>
+
+        <Menu Background="LightGray" Margin="0,25,496,279">
+            <MenuItem Header="Profile" Command="{Binding UpdateViewCommand}" CommandParameter="Profile"/>
+            <MenuItem Header="Make an order"/>
+            <MenuItem Header="All orders" Command="{Binding UpdateViewCommand}" CommandParameter="All orders"/>
+        </Menu>
+
+        <design:OutlinedTextBlock Text="Make an order" StrokeThickness="2" Fill="White" Stroke="Red" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="237,55,0,0"/>
+        <TextBox x:Name="TOTALPRICE" HorizontalAlignment="Center" TextWrapping="Wrap" VerticalAlignment="Top" Width="112" Height="26" Margin="0,238,0,0" TextAlignment="Center"/>
+        <TextBlock Text="TOTAL PRICE" VerticalAlignment="Top" HorizontalAlignment="Center" Padding="10,0,0,0" Margin="0,243,0,0" Foreground="#FF8D8585" FontStyle="Italic" Width="84" IsHitTestVisible="False">
+            <TextBlock.Style>
+                <Style TargetType="TextBlock">
+                    <Setter Property="Visibility" Value="Collapsed"/>
+                    <Style.Triggers>
+                        <MultiDataTrigger>
+                            <MultiDataTrigger.Conditions>
+                                <Condition Binding="{Binding Text, ElementName=TOTALPRICE}" Value=""/>
+                                <Condition Binding="{Binding IsKeyboardFocusWithin, ElementName=TOTALPRICE}" Value="False"/>
+                            </MultiDataTrigger.Conditions>
+                            <Setter Property="Visibility" Value="Visible"/>
+                        </MultiDataTrigger>
+                    </Style.Triggers>
+                </Style>
+            </TextBlock.Style>
+        </TextBlock>
+        <TextBox x:Name="QUALITY" HorizontalAlignment="Left" TextWrapping="Wrap" VerticalAlignment="Top" Width="112" Height="26" Margin="148,238,0,0" TextAlignment="Center"/>
+        <TextBlock Text="QUALITY" VerticalAlignment="Top" HorizontalAlignment="Left" Padding="10,0,0,0" Margin="169,243,0,0" Foreground="#FF8D8585" FontStyle="Italic" RenderTransformOrigin="-1.76,6.396" Width="70" IsHitTestVisible="False">
+            <TextBlock.Style>
+                <Style TargetType="TextBlock">
+                    <Setter Property="Visibility" Value="Collapsed"/>
+                    <Style.Triggers>
+                        <MultiDataTrigger>
+                            <MultiDataTrigger.Conditions>
+                                <Condition Binding="{Binding Text, ElementName=QUALITY}" Value=""/>
+                                <Condition Binding="{Binding IsKeyboardFocusWithin, ElementName=QUALITY}" Value="False"/>
+                            </MultiDataTrigger.Conditions>
+                            <Setter Property="Visibility" Value="Visible"/>
+                        </MultiDataTrigger>
+                    </Style.Triggers>
+                </Style>
+            </TextBlock.Style>
+        </TextBlock>
+        <Button Content="ADD..." Margin="435,238,153,58" Width="112" Height="26" Background="White" FontStyle="Italic" Foreground="#FF8D8585">
+            <Button.Template>
+                <ControlTemplate TargetType="Button">
+                    <Border Background="{TemplateBinding Background}" CornerRadius="14"  BorderThickness="2">
+                        <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                    </Border>
+                </ControlTemplate>
+            </Button.Template>
+        </Button>
+        <ComboBox HorizontalAlignment="Center" VerticalAlignment="Center" Width="164" Height="26" VerticalContentAlignment="Center">
+            <ComboBoxItem IsSelected="True" FontStyle="Italic" Foreground="#FF8D8585">Restaurant name</ComboBoxItem>
+        </ComboBox>
+        <ComboBox HorizontalAlignment="Center" VerticalAlignment="Top" Width="164" Height="26" VerticalContentAlignment="Center" Margin="0,187,0,0">
+            <ComboBoxItem IsSelected="True" FontStyle="Italic" Foreground="#FF8D8585" Content="Dish"/>
+        </ComboBox>
+        <ContentControl Content="{Binding SelectedViewModel}"/>
+    </Grid>
+</UserControl>
