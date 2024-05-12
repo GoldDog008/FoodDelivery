@@ -46,14 +46,35 @@ namespace Ipz_client.Commands
                 case "Registration":
                     _loginViewModel.SelectedViewModel = new RegistrationViewModel();
                     break;
+
                 case "Login":
                     _registrationViewModel.SelectedViewModel = new LoginViewModel();
                     break;
+
                 case "NewOrder":
-                    _profileViewModel.SelectedViewModel = new NewOrderViewModel();
+                    if (_profileViewModel != null)
+                    {
+                        _profileViewModel.SelectedViewModel = new NewOrderViewModel();
+                        break;
+                    }
                     break;
+
                 case "Profile":
-                    _newOrderViewModel.SelectedViewModel = new ProfileViewModel();
+                    if (_loginViewModel != null)
+                    {
+                        _loginViewModel.SelectedViewModel = new ProfileViewModel();
+                        break;
+                    }
+                    else if (_registrationViewModel != null)
+                    {
+                        _registrationViewModel.SelectedViewModel = new ProfileViewModel();
+                        break;
+                    }
+                    else if (_newOrderViewModel != null)
+                    {
+                        _newOrderViewModel.SelectedViewModel = new ProfileViewModel();
+                        break;
+                    }
                     break;
             }
         }

@@ -6,6 +6,7 @@ using Ipz_client.Views;
 using Newtonsoft.Json;
 using System.ComponentModel.DataAnnotations;
 using System.Net.Http;
+using System.Reflection.Metadata;
 using System.Text;
 using System.Windows;
 using System.Windows.Controls;
@@ -28,7 +29,7 @@ namespace Ipz_client.ViewModel
                 OnPropertyChanged(nameof(SelectedViewModel));
             }
         }
-        RegistrationRequestDto RegistrationRequestDto { get; set; } = new RegistrationRequestDto();
+        public RegistrationRequestDto RegistrationRequestDto { get; set; } = new RegistrationRequestDto();
 
         public ICommand RegistrationCommand { get; set; }
         public ICommand UpdateViewCommand { get; set; }
@@ -43,16 +44,33 @@ namespace Ipz_client.ViewModel
             return true; 
         }
 
+        public List<System.ComponentModel.DataAnnotations.ValidationResult>? ValidateRegistrationRequest()
+        {
+            var context = new ValidationContext(RegistrationRequestDto, serviceProvider: null, items: null);
+            var results = new List<System.ComponentModel.DataAnnotations.ValidationResult>();
+            Validator.TryValidateObject(RegistrationRequestDto, context, results, true);
+
+            return results;
+        }
+
         private async void RegistrationExecuteAsync(object obj)
         {
-            var data = JsonConvert.SerializeObject(RegistrationRequestDto);
-            var content = new StringContent(data, Encoding.UTF8, "application/json");
+            var objs = obj as object[];
 
-            HttpClient client = new HttpClient();
-            HttpResponseMessage response = await client.PostAsync(Paths.Registration, content);
+            var password = objs[0] as PasswordBox;
+            var confirmPassword = objs[1] as PasswordBox;
 
-            var jsonApiResponse = await response.Content.ReadAsStringAsync();
-            var apiResponse = JsonConvert.DeserializeObject<ApiResponse>(jsonApiResponse);
+            RegistrationRequestDto.Password = password.Password;
+            RegistrationRequestDto.ConfirmPassword = confirmPassword.Password;
+
+            var validateResult = ValidateRegistrationRequest();
+            if (validateResult != null && validateResult.Count > 0)
+            {
+                MessageBox.Show(validateResult.FirstOrDefault().ErrorMessage);
+                return;
+            }
+
+            var apiResponse = await ServerRequest.SendAsync(Paths.Registration, RegistrationRequestDto, RequestTypes.Post);
 
             if (apiResponse.Success)
             {
@@ -62,12 +80,12 @@ namespace Ipz_client.ViewModel
                 var user = JsonConvert.DeserializeObject<UserAuthResponseDto>(userJson);
 
                 CurrentUser.SetCurrentUser(user);
+                UpdateViewCommand.Execute("Profile");
             }
             else
             {
                 MessageBox.Show(apiResponse.Errors.First());
             }
         }
-
     }
 }

@@ -40,25 +40,13 @@ namespace Ipz_client.ViewModel
             UpdateViewCommand = new ViewCommand(this);
         }
 
-        public bool IsValidLoginRequest()
+        public List<System.ComponentModel.DataAnnotations.ValidationResult>? ValidateLoginRequest()
         {
             var context = new ValidationContext(LoginRequestDto, serviceProvider: null, items: null);
             var results = new List<System.ComponentModel.DataAnnotations.ValidationResult>();
-            var isValid = Validator.TryValidateObject(LoginRequestDto, context, results, true);
+            Validator.TryValidateObject(LoginRequestDto, context, results, true);
 
-            return isValid;
-
-            //if (!isValid)
-            //{
-            //    List<string> errors = new List<string>();
-            //    foreach (var error in results)
-            //    {
-            //        errors.Add(error.ErrorMessage);
-
-            //    }
-
-            //    return error.ErrorMessage;
-            //}
+            return results;
         }
 
         private bool LoginCanExecute(object obj)
@@ -71,20 +59,14 @@ namespace Ipz_client.ViewModel
             PasswordBox box = (PasswordBox)obj;
             LoginRequestDto.Password = box.Password;
 
-            if (!IsValidLoginRequest())
+            var validateResult = ValidateLoginRequest();
+            if (validateResult != null && validateResult.Count > 0)
             {
-                MessageBox.Show("Possible errors:\nInvalid email\nPasword must contains minimum 8 character");
+                MessageBox.Show(validateResult.FirstOrDefault().ErrorMessage);
                 return;
             }
 
-            var data = JsonConvert.SerializeObject(LoginRequestDto);
-            var content = new StringContent(data, Encoding.UTF8, "application/json");
-
-            HttpClient client = new HttpClient();
-            HttpResponseMessage response = await client.PostAsync(Paths.Login, content);
-
-            var jsonApiResponse = await response.Content.ReadAsStringAsync();
-            var apiResponse = JsonConvert.DeserializeObject<ApiResponse>(jsonApiResponse);
+            var apiResponse = await ServerRequest.SendAsync(Paths.Login, LoginRequestDto, RequestTypes.Post);
 
             if (apiResponse.Success)
             {
@@ -94,6 +76,7 @@ namespace Ipz_client.ViewModel
                 var user = JsonConvert.DeserializeObject<UserAuthResponseDto>(userJson);
 
                 CurrentUser.SetCurrentUser(user);
+                UpdateViewCommand.Execute("Profile");
             }
             else
             {

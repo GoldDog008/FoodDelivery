@@ -4,7 +4,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:Ipz_client.Views"
-             xmlns:design="clr-namespace:Ipz_client.Design"
+             xmlns:design="clr-namespace:Ipz_client.Design" xmlns:viewmodel="clr-namespace:Ipz_client.ViewModel" xmlns:local1="clr-namespace:Ipz_client.CommandParameters" d:DataContext="{d:DesignInstance Type=viewmodel:RegistrationViewModel}"
              mc:Ignorable="d"
              Height="400" Width="700">
     <UserControl.Resources>
@@ -36,6 +36,7 @@
                 </Setter.Value>
             </Setter>
         </Style>
+        <local1:PassThroughConverter x:Key="PassThroughConverter" />
     </UserControl.Resources>
     <Grid>
         <Grid.Background>
@@ -58,17 +59,26 @@
             </Grid>
         </Border>
         <design:OutlinedTextBlock Text="Registration" StrokeThickness="2" Fill="White" Stroke="Red" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="243,44,0,0"/>
-        <TextBox x:Name="Arka" HorizontalAlignment="Left" Margin="465,100,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="177" Height="24" VerticalContentAlignment="Center"/>
-        <TextBox HorizontalAlignment="Left" Margin="465,152,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="177" Height="24" VerticalContentAlignment="Center"/>
-        <TextBox HorizontalAlignment="Left" Margin="465,202,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="177" Height="24" VerticalContentAlignment="Center"/>
-        <PasswordBox Margin="465,252,58,120" Width="177" Height="24" VerticalContentAlignment="Center"/>
-        <PasswordBox Margin="465,302,58,71" Width="177" Height="24" VerticalContentAlignment="Center"/>
+        <TextBox x:Name="Arka" Text="{Binding RegistrationRequestDto.Email}" HorizontalAlignment="Left" Margin="465,100,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="177" Height="24" VerticalContentAlignment="Center"/>
+        <TextBox Text="{Binding RegistrationRequestDto.FirstName}" HorizontalAlignment="Left" Margin="465,152,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="177" Height="24" VerticalContentAlignment="Center"/>
+        <TextBox Text="{Binding RegistrationRequestDto.LastName}" HorizontalAlignment="Left" Margin="465,202,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="177" Height="24" VerticalContentAlignment="Center"/>
+        <PasswordBox x:Name="Password" Margin="465,252,58,120" Width="177" Height="24" VerticalContentAlignment="Center"/>
+        <PasswordBox x:Name="ConfirmPassword" Margin="465,302,58,71" Width="177" Height="24" VerticalContentAlignment="Center"/>
         <Label Content="Email" HorizontalAlignment="Left" Margin="465,73,0,0" VerticalAlignment="Top" Foreground="White" FontFamily="Bookman Old Style" FontStyle="Italic" FontSize="12" Height="27" Width="68" RenderTransformOrigin="0.482,0.812"/>
         <Label Content="First Name" HorizontalAlignment="Left" Margin="465,125,0,0" VerticalAlignment="Top" Foreground="White" FontFamily="Bookman Old Style" FontStyle="Italic" FontSize="12" Height="27" Width="115" RenderTransformOrigin="0.482,0.812"/>
         <Label Content="Last Name" HorizontalAlignment="Left" Margin="465,175,0,0" VerticalAlignment="Top" Foreground="White" FontFamily="Bookman Old Style" FontStyle="Italic" FontSize="12" Height="27" Width="115" RenderTransformOrigin="0.482,0.812"/>
         <Label Content="Passwort" HorizontalAlignment="Left" Margin="465,227,0,0" VerticalAlignment="Top" Foreground="White" FontFamily="Bookman Old Style" FontStyle="Italic" FontSize="12" Height="27" Width="107" RenderTransformOrigin="0.482,0.812"/>
         <Label Content="Re-enter Passwort" HorizontalAlignment="Left" Margin="465,278,0,0" VerticalAlignment="Top" Foreground="White" FontFamily="Bookman Old Style" FontStyle="Italic" FontSize="12" Height="27" Width="172" RenderTransformOrigin="0.482,0.812"/>
-        <Button x:Name="SignUp" Content="Sign up" HorizontalAlignment="Left" Margin="442,347,0,0" VerticalAlignment="Top" Width="218" Height="33" Background="#1E1E1E" Foreground="White" FontFamily="HP Simplified Jpan" FontSize="16">
+
+        <Button x:Name="SignUp" Command="{Binding RegistrationCommand}" Content="Sign up" HorizontalAlignment="Left" Margin="442,347,0,0" VerticalAlignment="Top" Width="218" Height="33" Background="#1E1E1E" Foreground="White" FontFamily="HP Simplified Jpan" FontSize="16">
+            
+            <Button.CommandParameter>
+                <MultiBinding Converter="{StaticResource PassThroughConverter}">
+                    <Binding ElementName="Password"/>
+                    <Binding ElementName="ConfirmPassword"/>
+                </MultiBinding>
+            </Button.CommandParameter>
+            
             <Button.Resources>
                 <Style TargetType="Border">
                     <Setter Property="CornerRadius" Value="14"/>

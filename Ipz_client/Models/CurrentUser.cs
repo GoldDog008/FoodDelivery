@@ -9,15 +9,15 @@ namespace Ipz_client.Models
 {
     public static class CurrentUser
     {
-        public static Guid UserId { get; set; }
-        public static string FirstName { get; set; }
-        public static string LastName { get; set; }
-        public static string Email { get; set; }
-        public static string Phone { get; set; }
-        public static string Country { get; set; }
-        public static string City { get; set; }
-        public static string Street { get; set; }
-        public static string AccessToken { get; set; }
+        public static Guid? UserId { get; set; }
+        public static string? FirstName { get; set; }
+        public static string? LastName { get; set; }
+        public static string? Email { get; set; }
+        public static string? Phone { get; set; }
+        public static string? Country { get; set; }
+        public static string? City { get; set; }
+        public static string? Street { get; set; }
+        public static string? AccessToken { get; set; }
 
         public static void SetCurrentUser(UserAuthResponseDto user)
         {
@@ -30,6 +30,16 @@ namespace Ipz_client.Models
             City = user.City;
             Street = user.Street;
             AccessToken = user.AccessToken;
+        }
+
+        public static void SetCurrentUser(UserUpdateRequest user)
+        {
+            FirstName = user.FirstName;
+            LastName = user.LastName;
+            Phone = user.Phone;
+            Country = user.Country;
+            City = user.City;
+            Street = user.Street;
         }
     }
 }

@@ -53,21 +53,19 @@
             <MenuItem Header="All orders" Command="{Binding UpdateViewCommand}" CommandParameter="All orders"/>
         </Menu>
         <design:OutlinedTextBlock Text="Profile" StrokeThickness="2" Fill="White" Stroke="Red" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="279,43,0,0"/>
-        <TextBox x:Name="QUALITY" HorizontalAlignment="Left" TextWrapping="Wrap" VerticalAlignment="Top" Width="130" Height="28" Margin="111,120,0,0" TextAlignment="Center"/>
-        <TextBox x:Name="QUALITY_Копировать" HorizontalAlignment="Left" TextWrapping="Wrap" VerticalAlignment="Top" Width="130" Height="28" Margin="451,120,0,0" TextAlignment="Center"/>
-        <TextBox x:Name="QUALITY_Копировать1" HorizontalAlignment="Left" TextWrapping="Wrap" VerticalAlignment="Top" Width="130" Height="28" Margin="111,170,0,0" TextAlignment="Center"/>
-        <TextBox x:Name="QUALITY_Копировать2" HorizontalAlignment="Left" TextWrapping="Wrap" VerticalAlignment="Top" Width="130" Height="28" Margin="451,170,0,0" TextAlignment="Center"/>
-        <TextBox x:Name="QUALITY_Копировать3" HorizontalAlignment="Left" TextWrapping="Wrap" VerticalAlignment="Top" Width="130" Height="28" Margin="111,220,0,0" TextAlignment="Center"/>
-        <TextBox x:Name="QUALITY_Копировать4" HorizontalAlignment="Left" TextWrapping="Wrap" VerticalAlignment="Top" Width="130" Height="28" Margin="451,220,0,0" TextAlignment="Center"/>
-        <TextBox x:Name="QUALITY_Копировать5" HorizontalAlignment="Left" TextWrapping="Wrap" VerticalAlignment="Top" Width="130" Height="28" Margin="279,270,0,0" TextAlignment="Center"/>
+        <TextBox x:Name="FirstName" Text="{Binding User.FirstName}" HorizontalAlignment="Left" TextWrapping="Wrap" VerticalAlignment="Top" Width="130" Height="28" Margin="111,120,0,0" TextAlignment="Center"/>
+        <TextBox x:Name="LastName" Text="{Binding User.LastName}" HorizontalAlignment="Left" TextWrapping="Wrap" VerticalAlignment="Top" Width="130" Height="28" Margin="451,120,0,0" TextAlignment="Center"/>
+        <TextBox x:Name="Phone" Text="{Binding User.Phone}" HorizontalAlignment="Left" TextWrapping="Wrap" VerticalAlignment="Top" Width="130" Height="28" Margin="451,170,0,0" TextAlignment="Center"/>
+        <TextBox x:Name="Country" Text="{Binding User.Country}" HorizontalAlignment="Left" TextWrapping="Wrap" VerticalAlignment="Top" Width="130" Height="28" Margin="111,220,0,0" TextAlignment="Center"/>
+        <TextBox x:Name="City" Text="{Binding User.City}" HorizontalAlignment="Left" TextWrapping="Wrap" VerticalAlignment="Top" Width="130" Height="28" Margin="451,220,0,0" TextAlignment="Center"/>
+        <TextBox x:Name="Street" Text="{Binding User.Street}" HorizontalAlignment="Left" TextWrapping="Wrap" VerticalAlignment="Top" Width="130" Height="28" Margin="279,270,0,0" TextAlignment="Center"/>
         <Label Content="First name" Foreground="White" FontSize="17" HorizontalAlignment="Left" Margin="111,99,0,0" VerticalAlignment="Top" FontFamily="Bookman Old Style" FontStyle="Italic" Height="36" Width="106"/>
         <Label Content="Last name" Foreground="White" FontSize="17" HorizontalAlignment="Left" Margin="451,99,0,0" VerticalAlignment="Top" FontFamily="Bookman Old Style" FontStyle="Italic" Height="36" Width="107"/>
-        <Label Content="Email" Foreground="White" FontSize="17" HorizontalAlignment="Left" Margin="111,149,0,0" VerticalAlignment="Top" FontFamily="Bookman Old Style" FontStyle="Italic" Height="36" Width="60"/>
         <Label Content="Phone" Foreground="White" FontSize="17" HorizontalAlignment="Left" Margin="451,149,0,0" VerticalAlignment="Top" FontFamily="Bookman Old Style" FontStyle="Italic" Height="36" Width="60"/>
         <Label Content="Country" Foreground="White" FontSize="17" HorizontalAlignment="Left" Margin="111,198,0,0" VerticalAlignment="Top" FontFamily="Bookman Old Style" FontStyle="Italic" Height="36" Width="93"/>
         <Label Content="City" Foreground="White" FontSize="17" HorizontalAlignment="Left" Margin="451,199,0,0" VerticalAlignment="Top" FontFamily="Bookman Old Style" FontStyle="Italic" Height="36" Width="60"/>
         <Label Content="Street" Foreground="Black" FontSize="17" HorizontalAlignment="Left" Margin="279,249,0,0" VerticalAlignment="Top" FontFamily="Bookman Old Style" FontStyle="Italic" Height="36" Width="60"/>
-        <Button x:Name="Accept" Content="Accept" HorizontalAlignment="Left" VerticalAlignment="Top" Width="144" Height="38" Background="#1E1E1E" Foreground="White" FontFamily="HP Simplified Jpan" FontSize="14" Grid.Row="1" Margin="272,25,0,0"  >
+        <Button x:Name="Accept" Command="{Binding UpdateProfileCommand}" Content="Save" HorizontalAlignment="Left" VerticalAlignment="Top" Width="144" Height="38" Background="#1E1E1E" Foreground="White" FontFamily="HP Simplified Jpan" FontSize="24" Grid.Row="1" Margin="272,25,0,0"  >
             <Button.Resources>
                 <Style TargetType="{x:Type Border}">
                     <Setter Property="CornerRadius" Value="14"/>
