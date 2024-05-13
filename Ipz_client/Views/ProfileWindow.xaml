@@ -77,5 +77,6 @@
             </Button.Resources>
         </Button>
         <ContentControl Content="{Binding SelectedViewModel}"/>
+        <TextBlock HorizontalAlignment="Left" Margin="576,44,0,0" Grid.Row="1" TextWrapping="Wrap" Text="{Binding CurrentTime}" VerticalAlignment="Top" Foreground="White"/>
     </Grid>
 </UserControl>

@@ -97,7 +97,6 @@ namespace Ipz_client.ViewModel
             var orders = JsonConvert.DeserializeObject<List<OrderResponseDto>>(ordersJson);
 
             Orders = new ObservableCollection<OrderResponseDto>(orders);
-            //SelectedRestraunt = Restraunts.FirstOrDefault();
         }
 
         private bool AllOrdersUpdateCanExecute(object obj)

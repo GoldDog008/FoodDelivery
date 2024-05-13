@@ -4,7 +4,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:Ipz_client.Views"
-             xmlns:design="clr-namespace:Ipz_client.Design"
+             xmlns:design="clr-namespace:Ipz_client.Design" xmlns:viewmodel="clr-namespace:Ipz_client.ViewModel" d:DataContext="{d:DesignInstance Type=viewmodel:AddNewRestaurantViewModel}"
              mc:Ignorable="d" 
              Height="400" Width="700">
     <UserControl.Resources>
@@ -60,7 +60,7 @@
 
         <Label Content="create new" HorizontalAlignment="Left" Margin="391,95,0,0" VerticalAlignment="Top" FontStyle="Italic" FontSize="14" Foreground="White" FontFamily="Bookman Old Style" Height="33" Width="91"/>
 
-        <TextBox x:Name="Country" HorizontalAlignment="Center" TextWrapping="Wrap" VerticalAlignment="Top" Width="220" Height="32" Margin="0,146,0,0" VerticalContentAlignment="Center" TextAlignment="Center" IsReadOnly="False"/>
+        <TextBox x:Name="Country" Text="{Binding RestaurantCreateRequest.Country}" HorizontalAlignment="Center" TextWrapping="Wrap" VerticalAlignment="Top" Width="220" Height="32" Margin="0,146,0,0" VerticalContentAlignment="Center" TextAlignment="Center" IsReadOnly="False"/>
         <TextBlock Text="Country" VerticalAlignment="Top" HorizontalAlignment="Center"  Padding="10,0,0,0"  Foreground="#FF8D8585" FontStyle="Italic" RenderTransformOrigin="-1.76,6.396" Width="70" IsHitTestVisible="False" Margin="0,154,0,0">
             <TextBlock.Style>
                 <Style TargetType="TextBlock">
@@ -79,14 +79,14 @@
         </TextBlock>
 
 
-        <Button x:Name="CreateRestaraunt" Content="Create" HorizontalAlignment="Center" Margin="0,332,0,0" VerticalAlignment="Top" Width="151" Height="33" Background="#1E1E1E" Foreground="White" FontFamily="HP Simplified Jpan" FontSize="16">
+        <Button x:Name="CreateRestaraunt" Command="{Binding AddNewRestaurantCommand}" Content="Create" HorizontalAlignment="Center" Margin="0,332,0,0" VerticalAlignment="Top" Width="151" Height="33" Background="#1E1E1E" Foreground="White" FontFamily="HP Simplified Jpan" FontSize="16">
             <Button.Resources>
                 <Style TargetType="Border">
                     <Setter Property="CornerRadius" Value="14"/>
                 </Style>
             </Button.Resources>
         </Button>
-        <TextBox x:Name="City" HorizontalAlignment="Center" TextWrapping="Wrap" VerticalAlignment="Top" Width="220" Height="32" Margin="0,191,0,0" VerticalContentAlignment="Center" TextAlignment="Center" IsReadOnly="False"/>
+        <TextBox x:Name="City" Text="{Binding RestaurantCreateRequest.City}" HorizontalAlignment="Center" TextWrapping="Wrap" VerticalAlignment="Top" Width="220" Height="32" Margin="0,191,0,0" VerticalContentAlignment="Center" TextAlignment="Center" IsReadOnly="False"/>
         <TextBlock Text="City" VerticalAlignment="Top" HorizontalAlignment="Center"  Padding="10,0,0,0"  Foreground="#FF8D8585" FontStyle="Italic" RenderTransformOrigin="-1.76,6.396" Width="50" IsHitTestVisible="False" Margin="0,199,0,0">
             <TextBlock.Style>
                 <Style TargetType="{x:Type TextBlock}">
@@ -103,7 +103,7 @@
                 </Style>
             </TextBlock.Style>
         </TextBlock>
-        <TextBox x:Name="Street" HorizontalAlignment="Center" TextWrapping="Wrap" VerticalAlignment="Top" Width="220" Height="32" Margin="0,235,0,0" VerticalContentAlignment="Center" TextAlignment="Center" IsReadOnly="False"/>
+        <TextBox x:Name="Street" Text="{Binding RestaurantCreateRequest.Street}" HorizontalAlignment="Center" TextWrapping="Wrap" VerticalAlignment="Top" Width="220" Height="32" Margin="0,235,0,0" VerticalContentAlignment="Center" TextAlignment="Center" IsReadOnly="False"/>
         <TextBlock Text="Street" VerticalAlignment="Top" HorizontalAlignment="Center"  Padding="10,0,0,0"  Foreground="#FF8D8585" FontStyle="Italic" RenderTransformOrigin="-1.76,6.396" Width="50" IsHitTestVisible="False" Margin="0,243,0,0">
             <TextBlock.Style>
                 <Style TargetType="{x:Type TextBlock}">
@@ -120,7 +120,7 @@
                 </Style>
             </TextBlock.Style>
         </TextBlock>
-        <TextBox x:Name="RestarauntName" HorizontalAlignment="Center" TextWrapping="Wrap" VerticalAlignment="Top" Width="220" Height="32" Margin="0,281,0,0" VerticalContentAlignment="Center" TextAlignment="Center" IsReadOnly="False"/>
+        <TextBox x:Name="RestarauntName" Text="{Binding RestaurantCreateRequest.Name}" HorizontalAlignment="Center" TextWrapping="Wrap" VerticalAlignment="Top" Width="220" Height="32" Margin="0,281,0,0" VerticalContentAlignment="Center" TextAlignment="Center" IsReadOnly="False"/>
         <TextBlock Text="Restaraunt name" VerticalAlignment="Top" HorizontalAlignment="Center"  Padding="10,0,0,0"  Foreground="#FF8D8585" FontStyle="Italic" RenderTransformOrigin="-1.76,6.396" Width="107" IsHitTestVisible="False" Margin="0,289,0,0">
             <TextBlock.Style>
                 <Style TargetType="{x:Type TextBlock}">

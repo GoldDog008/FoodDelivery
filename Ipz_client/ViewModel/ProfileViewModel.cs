@@ -1,13 +1,26 @@
 ﻿using Ipz_client.Commands;
 using Ipz_client.Models;
+using Newtonsoft.Json;
 using System.ComponentModel.DataAnnotations;
 using System.Windows;
 using System.Windows.Input;
+using System.Windows.Threading;
 
 namespace Ipz_client.ViewModel
 {
     class ProfileViewModel : BaseViewModel
     {
+        private DateTime _currentTime;
+        public DateTime CurrentTime
+        {
+            get { return _currentTime; }
+            set
+            {
+                _currentTime = value;
+                OnPropertyChanged(nameof(CurrentTime));
+            }
+        }
+
         public UserUpdateRequest User { get; set; }
 
         private BaseViewModel _selectedViewModel;
@@ -33,6 +46,10 @@ namespace Ipz_client.ViewModel
             User = new UserUpdateRequest();
             SetUser();
 
+            DispatcherTimer timer = new DispatcherTimer();
+            timer.Interval = TimeSpan.FromSeconds(1);
+            timer.Tick += Timer_Tick;
+            timer.Start();
         }
 
         private void SetUser()
@@ -78,6 +95,21 @@ namespace Ipz_client.ViewModel
             else
             {
                 MessageBox.Show(apiResponse.Errors.First());
+            }
+        }
+
+        private void Timer_Tick(object? sender, EventArgs e)
+        {
+            GetServerTime();
+        }
+
+        private async void GetServerTime()
+        {
+            var apiResponse = await ServerRequest.SendAsync(Paths.GetCurrentTime, null, RequestTypes.Get);
+            if (apiResponse.Success)
+            {
+                var dateTimeJson = apiResponse.Data.ToString();
+                CurrentTime = DateTime.Parse(dateTimeJson);
             }
         }
     }

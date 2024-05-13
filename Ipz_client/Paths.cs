@@ -30,5 +30,8 @@ namespace Ipz_client
         //Users
         public static string GetUser =  Host + "/api/users/{0}";
         public static string UpdateUser = Host + "/api/users/";      
+
+        //Polling
+        public static string GetCurrentTime = Host + "/api/polling";
     }
 }
