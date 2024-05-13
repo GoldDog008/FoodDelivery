@@ -8,7 +8,7 @@ namespace Ipz_client.Models.Request.Dish
         public Guid RestaurantId { get; set; }
 
         [Required]
-        public string Name { get; set; } = null!;
+        public string Name { get; set; }
 
         [Required]
         [Range(1, 9999)]

@@ -4,7 +4,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:Ipz_client.Views"
-             xmlns:design="clr-namespace:Ipz_client.Design"
+             xmlns:design="clr-namespace:Ipz_client.Design" xmlns:viewmodel="clr-namespace:Ipz_client.ViewModel" d:DataContext="{d:DesignInstance Type=viewmodel:AddNewDishViewModel}"
              mc:Ignorable="d" 
              Height="400" Width="700">
     <UserControl.Resources>
@@ -57,7 +57,7 @@
             <MenuItem Header="All orders" Command="{Binding UpdateViewCommand}" CommandParameter="AllOrders"/>
         </Menu>
         <design:OutlinedTextBlock Text="ADD DISH" StrokeThickness="2" Fill="White" Stroke="Red" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="256,55,0,0"/>
-        <TextBox x:Name="Priceperone" HorizontalAlignment="Center" TextWrapping="Wrap" VerticalAlignment="Top" Width="220" Height="32" Margin="0,219,0,0" VerticalContentAlignment="Center" TextAlignment="Center" IsReadOnly="False"/>
+        <TextBox x:Name="Priceperone" Text="{Binding DishToRestaurantRequestDto.Price}" HorizontalAlignment="Center" TextWrapping="Wrap" VerticalAlignment="Top" Width="220" Height="32" Margin="0,219,0,0" VerticalContentAlignment="Center" TextAlignment="Center" IsReadOnly="False"/>
         <TextBlock Text="Price per one" VerticalAlignment="Top" HorizontalAlignment="Center"  Padding="10,0,0,0"  Foreground="#FF8D8585" FontStyle="Italic" RenderTransformOrigin="-1.76,6.396" Width="58" IsHitTestVisible="False" Margin="0,227,0,0">
             <TextBlock.Style>
                 <Style TargetType="{x:Type TextBlock}">
@@ -74,7 +74,7 @@
                 </Style>
             </TextBlock.Style>
         </TextBlock>
-        <TextBox x:Name="Dishname" HorizontalAlignment="Center" TextWrapping="Wrap" VerticalAlignment="Top" Width="220" Height="32" Margin="0,170,0,0" VerticalContentAlignment="Center" TextAlignment="Center" IsReadOnly="False"/>
+        <TextBox x:Name="Dishname" Text="{Binding DishToRestaurantRequestDto.Name}" HorizontalAlignment="Center" TextWrapping="Wrap" VerticalAlignment="Top" Width="220" Height="32" Margin="0,170,0,0" VerticalContentAlignment="Center" TextAlignment="Center" IsReadOnly="False"/>
         <TextBlock Text="Dish name" VerticalAlignment="Top" HorizontalAlignment="Center"  Padding="10,0,0,0"  Foreground="#FF8D8585" FontStyle="Italic" RenderTransformOrigin="-1.76,6.396" Width="74" IsHitTestVisible="False" Margin="0,178,0,0">
             <TextBlock.Style>
                 <Style TargetType="{x:Type TextBlock}">

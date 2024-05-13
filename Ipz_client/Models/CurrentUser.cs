@@ -19,7 +19,7 @@ namespace Ipz_client.Models
         public static string? City { get; set; }
         public static string? Street { get; set; }
         public static string? AccessToken { get; set; }
-        public static bool IsAdmin => GetRoleFromToken(AccessToken) == "admin";
+        public static bool IsAdmin => GetRoleFromToken(AccessToken) == "Admin";
 
         public static void SetCurrentUser(UserAuthResponseDto user)
         {

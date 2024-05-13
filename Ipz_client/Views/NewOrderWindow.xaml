@@ -106,10 +106,10 @@
                   ItemsSource="{Binding Restraunts}" 
                   SelectedItem="{Binding SelectedRestraunt}" 
                   HorizontalAlignment="Center" 
-                  VerticalAlignment="Center" 
+                  VerticalAlignment="Top" 
                   Width="164" 
                   Height="26" 
-                  VerticalContentAlignment="Center">
+                  VerticalContentAlignment="Center" Margin="0,140,0,0">
         </ComboBox>
 
         <ComboBox 
