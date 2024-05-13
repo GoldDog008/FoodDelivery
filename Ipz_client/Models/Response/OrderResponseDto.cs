@@ -6,6 +6,11 @@
         public DateTime CreatedAt { get; set; }
         public decimal TotalAmount { get; set; }
         public string RestaurantName { get; set; } = null!;
-        //public List<OrderInformationResponseDto> OrderInformations { get; set; }
+        public List<OrderInformationResponseDto> OrderInformations { get; set; }
+
+        override public string ToString()
+        {
+            return $"{RestaurantName}, {TotalAmount} грн., {CreatedAt}";
+        }
     }
 }

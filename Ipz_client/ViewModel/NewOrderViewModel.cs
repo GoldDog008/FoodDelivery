@@ -230,6 +230,12 @@ namespace Ipz_client.ViewModel
 
         private async void NewOrderExecuteAsync(object obj)
         {
+            if (OrderInformations == null || OrderInformations.Count == 0)
+            {
+                MessageBox.Show("You must add at least one dish to order");
+                return;
+            }
+
             var OrderInformationsRequest = new List<OrderInformationCreateRequestDto>();
 
             foreach (var orderInformation in OrderInformations)
