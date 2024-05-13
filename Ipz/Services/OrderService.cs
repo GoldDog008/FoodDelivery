@@ -85,7 +85,7 @@ namespace Ipz_server.Services
                     });
                 }
 
-                order.TotalAmount = orderInformations.Sum(x => x.Quantity * dishes.FirstOrDefault(x => x.DishId == x.DishId).Price);
+                order.TotalAmount = orderInformations.Sum(x => x.Quantity * dishes.FirstOrDefault(y => y.DishId == x.DishId).Price);
 
                 await _context.OrderInformations.AddRangeAsync(orderInformations);
                 await _context.SaveChangesAsync();

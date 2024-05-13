@@ -55,7 +55,7 @@
         </Menu>
 
         <design:OutlinedTextBlock Text="Make an order" StrokeThickness="2" Fill="White" Stroke="Red" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="237,55,0,0"/>
-        <TextBox x:Name="TOTALPRICE" Text="{Binding TotalPrice}" IsReadOnly="True" HorizontalAlignment="Center" TextWrapping="Wrap" VerticalAlignment="Top" Width="112" Height="26" Margin="0,238,0,0" TextAlignment="Center"/>
+        <TextBox x:Name="TOTALPRICE" Text="{Binding SelectedDishPrice}" IsReadOnly="True" HorizontalAlignment="Center" TextWrapping="Wrap" VerticalAlignment="Top" Width="112" Height="26" Margin="0,238,0,0" TextAlignment="Center"/>
         <TextBlock Text="TOTAL PRICE" VerticalAlignment="Top" HorizontalAlignment="Center" Padding="10,0,0,0" Margin="0,243,0,0" Foreground="#FF8D8585" FontStyle="Italic" Width="84" IsHitTestVisible="False">
             <TextBlock.Style>
                 <Style TargetType="TextBlock">
@@ -89,7 +89,7 @@
                 </Style>
             </TextBlock.Style>
         </TextBlock>
-        <Button Content="ADD..." Margin="435,238,153,58" Width="112" Height="26" Background="White" FontStyle="Italic" Foreground="#FF8D8585">
+        <Button Content="ADD..." Command="{Binding AddOrderCommand}" Margin="435,238,153,58" Width="112" Height="26" Background="White" FontStyle="Italic" Foreground="#FF8D8585">
             <Button.Template>
                 <ControlTemplate TargetType="Button">
                     <Border Background="{TemplateBinding Background}" CornerRadius="14"  BorderThickness="2">
@@ -111,8 +111,8 @@
 
         <ComboBox 
                   x:Name="dishesComboBox" 
-                  SelectedItem="{Binding SelectedDish}"
                   ItemsSource="{Binding Dishes}"
+                  SelectedItem="{Binding SelectedDish}"
                   HorizontalAlignment="Center" 
                   VerticalAlignment="Top" 
                   Width="164" 
@@ -121,9 +121,17 @@
                   Margin="0,187,0,0">
         </ComboBox>
 
-        <ListBox Margin="175,280,175,0" Grid.RowSpan="2" Background="Transparent" Foreground="White"/>
+        <ListBox 
+            ItemsSource="{Binding OrderInformations}"
+            SelectedItem="{Binding SelectedOrderInformation}"
+            Margin="175,280,175,0" 
+            Grid.RowSpan="2" 
+            Background="Transparent" 
+            Foreground="White">
+        </ListBox>
 
-        <Button x:Name="MakeOrder" Content="Make Order" HorizontalAlignment="Left" Margin="553,34,0,0" VerticalAlignment="Top" Width="141" Height="37" Background="#1E1E1E" Foreground="White" FontFamily="HP Simplified Jpan" FontSize="16" Grid.Row="1">
+
+        <Button x:Name="MakeOrder" Command="{Binding CreateOrderCommand}" Content="Make Order" HorizontalAlignment="Left" Margin="553,34,0,0" VerticalAlignment="Top" Width="141" Height="37" Background="#1E1E1E" Foreground="White" FontFamily="HP Simplified Jpan" FontSize="16" Grid.Row="1">
             <Button.Resources>
                 <Style TargetType="Border">
                     <Setter Property="CornerRadius" Value="14"/>
@@ -131,6 +139,14 @@
             </Button.Resources>
         </Button>
 
-        <!--<ContentControl Content="{Binding SelectedViewModel}"/>-->
+        <ContentControl Content="{Binding SelectedViewModel}"/>
+        <TextBlock HorizontalAlignment="Left" Margin="587,10,0,0" Grid.Row="1" TextWrapping="Wrap" Text="{Binding TotalPrice}" VerticalAlignment="Top" Foreground="White" FontSize="18"/>
+        <Button x:Name="Remove" Command="{Binding RemoveSelectedCommand}" Content="Remove selected" HorizontalAlignment="Left" Margin="10,34,0,0" VerticalAlignment="Top" Width="141" Height="37" Background="#1E1E1E" Foreground="White" FontFamily="HP Simplified Jpan" FontSize="16" Grid.Row="1">
+            <Button.Resources>
+                <Style TargetType="{x:Type Border}">
+                    <Setter Property="CornerRadius" Value="14"/>
+                </Style>
+            </Button.Resources>
+        </Button>
     </Grid>
 </UserControl>
