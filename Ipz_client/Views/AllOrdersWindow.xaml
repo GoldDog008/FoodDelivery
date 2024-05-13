@@ -16,7 +16,7 @@
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
-        <Border Background="Gray" Height="25" Margin="0,0,0,297" MouseLeftButtonDown="Border_MouseLeftButtonDown">
+        <Border Background="Gray" Height="25" Margin="0,0,0,340" MouseLeftButtonDown="Border_MouseLeftButtonDown">
             <Grid Margin="2,0,-2,0">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="*" />
@@ -37,7 +37,10 @@
             <MenuItem Header="Make an order" Command="{Binding UpdateViewCommand}" CommandParameter="NewOrder"/>
             <MenuItem Header="All orders"/>
         </Menu>
-
+        <Menu x:Name="AdminMenu" Background="Transparent" Margin="541,25,0,311" Foreground="White">
+            <MenuItem Header="New restaurant" Command="{Binding UpdateViewCommand}" CommandParameter="NewRestaraunt"/>
+            <MenuItem Header="New dish" Command="{Binding UpdateViewCommand}" CommandParameter="NewDish"/>
+        </Menu>
         <design:OutlinedTextBlock Text="All orders" StrokeThickness="2" Fill="White" Stroke="Red" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="248,47,0,0"/>
         <ListBox 
             ItemsSource="{Binding Orders}" 

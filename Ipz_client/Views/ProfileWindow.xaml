@@ -31,7 +31,7 @@
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
-        <Border Background="Gray" Height="25" Margin="0,0,0,297" MouseLeftButtonDown="Border_MouseLeftButtonDown">
+        <Border Background="Gray" Height="25" Margin="0,0,0,340" MouseLeftButtonDown="Border_MouseLeftButtonDown">
             <Grid Margin="2,0,-2,0">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="*" />
@@ -51,6 +51,10 @@
             <MenuItem Header="Profile"/>
             <MenuItem Header="Make an order" Command="{Binding UpdateViewCommand}" CommandParameter="NewOrder"/>
             <MenuItem Header="All orders" Command="{Binding UpdateViewCommand}" CommandParameter="AllOrders"/>
+        </Menu>
+        <Menu x:Name="AdminMenu" Background="Transparent" Margin="541,25,0,311" Foreground="White">
+            <MenuItem Header="New restaurant" Command="{Binding UpdateViewCommand}" CommandParameter="NewRestaraunt"/>
+            <MenuItem Header="New dish" Command="{Binding UpdateViewCommand}" CommandParameter="NewDish"/>
         </Menu>
         <design:OutlinedTextBlock Text="Profile" StrokeThickness="2" Fill="White" Stroke="Red" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="279,43,0,0"/>
         <TextBox x:Name="FirstName" Text="{Binding User.FirstName}" HorizontalAlignment="Left" TextWrapping="Wrap" VerticalAlignment="Top" Width="130" Height="28" Margin="111,120,0,0" TextAlignment="Center"/>

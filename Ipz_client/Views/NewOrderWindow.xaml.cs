@@ -1,4 +1,5 @@
-﻿using Ipz_client.ViewModel;
+﻿using Ipz_client.Models;
+using Ipz_client.ViewModel;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
@@ -13,7 +14,14 @@ namespace Ipz_client.Views
         public NewOrderWindow()
         {
             InitializeComponent();
-
+            if (CurrentUser.IsAdmin)
+            {
+                AdminMenu.Visibility = Visibility.Visible;
+            }
+            else
+            {
+                AdminMenu.Visibility = Visibility.Collapsed;
+            }
             DataContext = new NewOrderViewModel();
         }
         private void Close_Click(object sender, RoutedEventArgs e)

@@ -47,11 +47,15 @@
             </Grid>
         </Border>
 
-        <Menu Background="Transparent" Margin="0,25,541,311" Foreground="White">
+        <Menu Background="Transparent" Margin="541,25,0,311" Foreground="White">
             <MenuItem Header="New restaurant" Command="{Binding UpdateViewCommand}" CommandParameter="NewRestaraunt"/>
             <MenuItem Header="New dish"/>
         </Menu>
-
+        <Menu Background="Transparent" Margin="0,25,496,279" Foreground="White">
+            <MenuItem Header="Profile" Command="{Binding UpdateViewCommand}" CommandParameter="Profile"/>
+            <MenuItem Header="Make an order" Command="{Binding UpdateViewCommand}" CommandParameter="NewOrder"/>
+            <MenuItem Header="All orders" Command="{Binding UpdateViewCommand}" CommandParameter="AllOrders"/>
+        </Menu>
         <design:OutlinedTextBlock Text="ADD DISH" StrokeThickness="2" Fill="White" Stroke="Red" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="256,55,0,0"/>
         <TextBox x:Name="Priceperone" HorizontalAlignment="Center" TextWrapping="Wrap" VerticalAlignment="Top" Width="220" Height="32" Margin="0,219,0,0" VerticalContentAlignment="Center" TextAlignment="Center" IsReadOnly="False"/>
         <TextBlock Text="Price per one" VerticalAlignment="Top" HorizontalAlignment="Center"  Padding="10,0,0,0"  Foreground="#FF8D8585" FontStyle="Italic" RenderTransformOrigin="-1.76,6.396" Width="58" IsHitTestVisible="False" Margin="0,227,0,0">
@@ -87,23 +91,16 @@
                 </Style>
             </TextBlock.Style>
         </TextBlock>
-        <TextBox x:Name="RestarauntName" HorizontalAlignment="Center" TextWrapping="Wrap" VerticalAlignment="Top" Width="220" Height="32" Margin="0,125,0,0" VerticalContentAlignment="Center" TextAlignment="Center" IsReadOnly="False"/>
-        <TextBlock Text="Restaraunt name" VerticalAlignment="Top" HorizontalAlignment="Center"  Padding="10,0,0,0"  Foreground="#FF8D8585" FontStyle="Italic" RenderTransformOrigin="-1.76,6.396" Width="108" IsHitTestVisible="False" Margin="0,133,0,0">
-            <TextBlock.Style>
-                <Style TargetType="{x:Type TextBlock}">
-                    <Setter Property="Visibility" Value="Collapsed"/>
-                    <Style.Triggers>
-                        <MultiDataTrigger>
-                            <MultiDataTrigger.Conditions>
-                                <Condition Binding="{Binding Text, ElementName=RestarauntName}" Value=""/>
-                                <Condition Binding="{Binding IsKeyboardFocusWithin, ElementName=RestarauntName}" Value="False"/>
-                            </MultiDataTrigger.Conditions>
-                            <Setter Property="Visibility" Value="Visible"/>
-                        </MultiDataTrigger>
-                    </Style.Triggers>
-                </Style>
-            </TextBlock.Style>
-        </TextBlock>
+        <ComboBox x:Name="restrauntsComboBox" 
+          ItemsSource="{Binding Restraunts}" 
+          SelectedItem="{Binding SelectedRestraunt}" 
+          HorizontalAlignment="Center" 
+          VerticalAlignment="Top" 
+          Width="220" 
+          Height="26" 
+          VerticalContentAlignment="Center" Margin="0,128,0,0">
+        </ComboBox>
+
         <Button x:Name="AddDish" Content="Add" HorizontalAlignment="Center" Margin="0,267,0,0" VerticalAlignment="Top" Width="152" Height="33" Background="#1E1E1E" Foreground="White" FontFamily="HP Simplified Jpan" FontSize="16">
             <Button.Resources>
                 <Style TargetType="Border">

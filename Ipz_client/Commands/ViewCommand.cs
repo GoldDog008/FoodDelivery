@@ -76,6 +76,14 @@ namespace Ipz_client.Commands
                     {
                         _allOrdersViewModel.SelectedViewModel = new NewOrderViewModel();
                     }
+                    else if (_addNewDishViewModel != null)
+                    {
+                        _addNewDishViewModel.SelectedViewModel = new NewOrderViewModel();
+                    }
+                    else if (_addNewRestaurantViewModel != null)
+                    {
+                        _addNewRestaurantViewModel.SelectedViewModel = new NewOrderViewModel();
+                    }
                     break;
 
                 case "Profile":
@@ -98,6 +106,14 @@ namespace Ipz_client.Commands
                     {
                         _allOrdersViewModel.SelectedViewModel = new ProfileViewModel();
                     }
+                    else if (_addNewDishViewModel != null)
+                    {
+                        _addNewDishViewModel.SelectedViewModel = new ProfileViewModel();
+                    }
+                    else if (_addNewRestaurantViewModel != null)
+                    {
+                        _addNewRestaurantViewModel.SelectedViewModel = new ProfileViewModel();
+                    }
                     break;
                 case "AllOrders":
                     if (_profileViewModel != null)
@@ -110,12 +126,52 @@ namespace Ipz_client.Commands
                         _newOrderViewModel.SelectedViewModel = new AllOrdersViewModel();
                         break;
                     }
+                    else if (_addNewDishViewModel != null)
+                    {
+                        _addNewDishViewModel.SelectedViewModel = new AllOrdersViewModel();
+                    }
+                    else if (_addNewRestaurantViewModel != null)
+                    {
+                        _addNewRestaurantViewModel.SelectedViewModel = new AllOrdersViewModel();
+                    }
                     break;
                 case "NewRestaraunt":
-                    _addNewDishViewModel.SelectedViewModel = new AddNewRestaurantViewModel();
+                    if (_addNewDishViewModel != null)
+                    {
+                        _addNewDishViewModel.SelectedViewModel = new AddNewRestaurantViewModel();
+                    }
+                    else if (_newOrderViewModel != null)
+                    {
+                        _newOrderViewModel.SelectedViewModel = new AddNewRestaurantViewModel();
+                        break;
+                    }
+                    else if (_allOrdersViewModel != null)
+                    {
+                        _allOrdersViewModel.SelectedViewModel = new AddNewRestaurantViewModel();
+                    }
+                    else if (_profileViewModel != null)
+                    {
+                        _profileViewModel.SelectedViewModel = new AddNewRestaurantViewModel();
+                    }
                     break;
                 case "NewDish":
-                    _addNewRestaurantViewModel.SelectedViewModel = new AddNewDishViewModel();
+                    if (_addNewRestaurantViewModel != null) 
+                    { 
+                        _addNewRestaurantViewModel.SelectedViewModel = new AddNewDishViewModel(); 
+                    }
+                    else if (_newOrderViewModel != null)
+                    {
+                        _newOrderViewModel.SelectedViewModel = new AddNewDishViewModel();
+                        break;
+                    }
+                    else if (_allOrdersViewModel != null)
+                    {
+                        _allOrdersViewModel.SelectedViewModel = new AddNewDishViewModel();
+                    }
+                    else if (_profileViewModel != null)
+                    {
+                        _profileViewModel.SelectedViewModel = new AddNewDishViewModel();
+                    }
                     break;
             }
         }
