@@ -4,7 +4,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:Ipz_client.Views"
-             xmlns:design="clr-namespace:Ipz_client.Design"
+             xmlns:design="clr-namespace:Ipz_client.Design" xmlns:viewmodel="clr-namespace:Ipz_client.ViewModel" d:DataContext="{d:DesignInstance Type=viewmodel:NewOrderViewModel}"
              mc:Ignorable="d" 
              Height="400" Width="700">
     <UserControl.Resources>
@@ -53,9 +53,9 @@
             <MenuItem Header="Make an order"/>
             <MenuItem Header="All orders" Command="{Binding UpdateViewCommand}" CommandParameter="AllOrders"/>
         </Menu>
-
+        
         <design:OutlinedTextBlock Text="Make an order" StrokeThickness="2" Fill="White" Stroke="Red" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="237,55,0,0"/>
-        <TextBox x:Name="TOTALPRICE" HorizontalAlignment="Center" TextWrapping="Wrap" VerticalAlignment="Top" Width="112" Height="26" Margin="0,238,0,0" TextAlignment="Center"/>
+        <TextBox x:Name="TOTALPRICE" Text="{Binding TotalPrice}" IsReadOnly="True" HorizontalAlignment="Center" TextWrapping="Wrap" VerticalAlignment="Top" Width="112" Height="26" Margin="0,238,0,0" TextAlignment="Center"/>
         <TextBlock Text="TOTAL PRICE" VerticalAlignment="Top" HorizontalAlignment="Center" Padding="10,0,0,0" Margin="0,243,0,0" Foreground="#FF8D8585" FontStyle="Italic" Width="84" IsHitTestVisible="False">
             <TextBlock.Style>
                 <Style TargetType="TextBlock">
@@ -72,7 +72,7 @@
                 </Style>
             </TextBlock.Style>
         </TextBlock>
-        <TextBox x:Name="QUALITY" HorizontalAlignment="Left" TextWrapping="Wrap" VerticalAlignment="Top" Width="112" Height="26" Margin="148,238,0,0" TextAlignment="Center"/>
+        <TextBox x:Name="QUALITY" Text="{Binding Quantity}" HorizontalAlignment="Left" TextWrapping="Wrap" VerticalAlignment="Top" Width="112" Height="26" Margin="148,238,0,0" TextAlignment="Center" IsReadOnly="False"/>
         <TextBlock Text="QUALITY" VerticalAlignment="Top" HorizontalAlignment="Left" Padding="10,0,0,0" Margin="169,243,0,0" Foreground="#FF8D8585" FontStyle="Italic" RenderTransformOrigin="-1.76,6.396" Width="70" IsHitTestVisible="False">
             <TextBlock.Style>
                 <Style TargetType="TextBlock">
@@ -98,11 +98,28 @@
                 </ControlTemplate>
             </Button.Template>
         </Button>
-        <ComboBox HorizontalAlignment="Center" VerticalAlignment="Center" Width="164" Height="26" VerticalContentAlignment="Center">
-            <ComboBoxItem IsSelected="True" FontStyle="Italic" Foreground="#FF8D8585">Restaurant name</ComboBoxItem>
+
+        <ComboBox x:Name="restrauntsComboBox" 
+                  ItemsSource="{Binding Restraunts}" 
+                  SelectedItem="{Binding SelectedRestraunt}" 
+                  HorizontalAlignment="Center" 
+                  VerticalAlignment="Center" 
+                  Width="164" 
+                  Height="26" 
+                  VerticalContentAlignment="Center">
         </ComboBox>
-        <ComboBox HorizontalAlignment="Center" VerticalAlignment="Top" Width="164" Height="26" VerticalContentAlignment="Center" Margin="0,187,0,0">
-            <ComboBoxItem IsSelected="True" FontStyle="Italic" Foreground="#FF8D8585" Content="Dish"/>
+
+        <ComboBox 
+                  x:Name="dishesComboBox" 
+                  SelectedItem="{Binding SelectedDish}"
+                  ItemsSource="{Binding Dishes}"
+                  HorizontalAlignment="Center" 
+                  VerticalAlignment="Top" 
+                  Width="164" 
+                  Height="26" 
+                  VerticalContentAlignment="Center" 
+                  Margin="0,187,0,0">
         </ComboBox>
+        <!--<ContentControl Content="{Binding SelectedViewModel}"/>-->
     </Grid>
 </UserControl>

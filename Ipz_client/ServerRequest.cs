@@ -14,7 +14,7 @@ namespace Ipz_client
 {
     public static class ServerRequest
     {
-        public static async Task<ApiResponse> SendAsync(string url, object data, string requestType)
+        public static async Task<ApiResponse> SendAsync(string url, object? data, string requestType)
         {
             try
             {
