@@ -39,7 +39,15 @@
         </Menu>
 
         <design:OutlinedTextBlock Text="All orders" StrokeThickness="2" Fill="White" Stroke="Red" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="248,47,0,0"/>
-        <ListBox Margin="0,90,0,-7" Grid.RowSpan="2" Background="Transparent" Foreground="White"/>
+        <ListBox 
+            ItemsSource="{Binding Orders}" 
+            SelectedItem="{Binding SelectedOrder}"
+            Margin="0,85,335,-7" 
+            Grid.RowSpan="2" 
+            Foreground="White" 
+            Background="{x:Null}"/>
+        <TextBlock HorizontalAlignment="Left" Margin="380,85,0,0" TextWrapping="Wrap" Text="{Binding OrderInfo}" VerticalAlignment="Top" Height="227" Width="310" Foreground="White"/>
+
         <ContentControl Content="{Binding SelectedViewModel}"/>
     </Grid>
 </UserControl>

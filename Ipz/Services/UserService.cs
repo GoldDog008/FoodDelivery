@@ -138,7 +138,7 @@ namespace Ipz_server.Services
                     return new ApiResponse
                     {
                         Success = false,
-                        Errors = new List<string> { "Not all data is filled in" }
+                        Errors = new List<string> { "Not all user data is filled in" }
                     };
                 }
 
