@@ -101,7 +101,7 @@
           VerticalContentAlignment="Center" Margin="0,128,0,0">
         </ComboBox>
 
-        <Button x:Name="AddDish" Content="Add" HorizontalAlignment="Center" Margin="0,267,0,0" VerticalAlignment="Top" Width="152" Height="33" Background="#1E1E1E" Foreground="White" FontFamily="HP Simplified Jpan" FontSize="16">
+        <Button x:Name="AddDish" Command="{Binding AddNewDishCommand}" Content="Add" HorizontalAlignment="Center" Margin="0,267,0,0" VerticalAlignment="Top" Width="152" Height="33" Background="#1E1E1E" Foreground="White" FontFamily="HP Simplified Jpan" FontSize="16">
             <Button.Resources>
                 <Style TargetType="Border">
                     <Setter Property="CornerRadius" Value="14"/>

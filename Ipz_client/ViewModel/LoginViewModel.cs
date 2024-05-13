@@ -70,8 +70,6 @@ namespace Ipz_client.ViewModel
 
             if (apiResponse.Success)
             {
-                MessageBox.Show("Login success");
-
                 var userJson = apiResponse.Data.ToString();
                 var user = JsonConvert.DeserializeObject<UserAuthResponseDto>(userJson);
 

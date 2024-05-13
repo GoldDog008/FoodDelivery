@@ -108,7 +108,7 @@ namespace Ipz_client.ViewModel
 
             if (apiResponse.Success)
             {
-                MessageBox.Show("Restraunt created successfully");
+                MessageBox.Show("Dish created successfully");
             }
             else
             {
