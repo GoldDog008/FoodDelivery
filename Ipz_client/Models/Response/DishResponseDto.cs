@@ -7,5 +7,10 @@
         public string Name { get; set; } = null!;
 
         public decimal Price { get; set; }
+
+        override public string ToString()
+        {
+            return Name;
+        }
     }
 }
