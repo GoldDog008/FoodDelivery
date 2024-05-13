@@ -17,6 +17,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <None Remove="images\.jpg" />
     <None Remove="images\allorders_background.jpg" />
     <None Remove="images\login_background.jpg" />
     <None Remove="images\newOrder_background.jpg" />

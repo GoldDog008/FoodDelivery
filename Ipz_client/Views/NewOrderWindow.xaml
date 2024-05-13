@@ -120,6 +120,8 @@
                   VerticalContentAlignment="Center" 
                   Margin="0,187,0,0">
         </ComboBox>
+
+        <ListBox Margin="175,280,175,0" Grid.RowSpan="2" Background="Transparent" Foreground="White"/>
         <!--<ContentControl Content="{Binding SelectedViewModel}"/>-->
     </Grid>
 </UserControl>
