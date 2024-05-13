@@ -150,5 +150,6 @@
                 </Style>
             </Button.Resources>
         </Button>
+        <ContentControl Content="{Binding SelectedViewModel}"/>
     </Grid>
 </UserControl>
