@@ -75,16 +75,16 @@
                 </Style>
             </TextBlock.Style>
         </TextBlock>
-        <TextBox x:Name="QUALITY" Text="{Binding Quantity}" HorizontalAlignment="Left" TextWrapping="Wrap" VerticalAlignment="Top" Width="112" Height="26" Margin="148,238,0,0" TextAlignment="Center" IsReadOnly="False"/>
-        <TextBlock Text="QUALITY" VerticalAlignment="Top" HorizontalAlignment="Left" Padding="10,0,0,0" Margin="169,243,0,0" Foreground="#FF8D8585" FontStyle="Italic" RenderTransformOrigin="-1.76,6.396" Width="70" IsHitTestVisible="False">
+        <TextBox x:Name="QUANTITY" Text="{Binding Quantity}" HorizontalAlignment="Left" TextWrapping="Wrap" VerticalAlignment="Top" Width="112" Height="26" Margin="148,238,0,0" TextAlignment="Center" IsReadOnly="False"/>
+        <TextBlock Text="QUANTITY" VerticalAlignment="Top" HorizontalAlignment="Left" Padding="10,0,0,0" Margin="169,243,0,0" Foreground="#FF8D8585" FontStyle="Italic" RenderTransformOrigin="-1.76,6.396" Width="70" IsHitTestVisible="False">
             <TextBlock.Style>
                 <Style TargetType="TextBlock">
                     <Setter Property="Visibility" Value="Collapsed"/>
                     <Style.Triggers>
                         <MultiDataTrigger>
                             <MultiDataTrigger.Conditions>
-                                <Condition Binding="{Binding Text, ElementName=QUALITY}" Value=""/>
-                                <Condition Binding="{Binding IsKeyboardFocusWithin, ElementName=QUALITY}" Value="False"/>
+                                <Condition Binding="{Binding Text, ElementName=QUANTITY}" Value=""/>
+                                <Condition Binding="{Binding IsKeyboardFocusWithin, ElementName=QUANTITY}" Value="False"/>
                             </MultiDataTrigger.Conditions>
                             <Setter Property="Visibility" Value="Visible"/>
                         </MultiDataTrigger>
@@ -134,7 +134,7 @@
         </ListBox>
 
 
-        <Button x:Name="MakeOrder" Command="{Binding CreateOrderCommand}" Content="Make Order" HorizontalAlignment="Left" Margin="553,34,0,0" VerticalAlignment="Top" Width="141" Height="37" Background="#1E1E1E" Foreground="White" FontFamily="HP Simplified Jpan" FontSize="16" Grid.Row="1">
+        <Button x:Name="MakeOrder" Command="{Binding CreateOrderCommand}" Content="Make Order" HorizontalAlignment="Left" Margin="553,-10,0,0" VerticalAlignment="Top" Width="141" Height="37" Background="#1E1E1E" Foreground="White" FontFamily="HP Simplified Jpan" FontSize="16" Grid.Row="1">
             <Button.Resources>
                 <Style TargetType="Border">
                     <Setter Property="CornerRadius" Value="14"/>
@@ -143,7 +143,7 @@
         </Button>
 
         <TextBlock HorizontalAlignment="Left" Margin="587,10,0,0" Grid.Row="1" TextWrapping="Wrap" Text="{Binding TotalPrice}" VerticalAlignment="Top" Foreground="White" FontSize="18"/>
-        <Button x:Name="Remove" Command="{Binding RemoveSelectedCommand}" Content="Remove selected" HorizontalAlignment="Left" Margin="10,34,0,0" VerticalAlignment="Top" Width="141" Height="37" Background="#1E1E1E" Foreground="White" FontFamily="HP Simplified Jpan" FontSize="16" Grid.Row="1">
+        <Button x:Name="Remove" Command="{Binding RemoveSelectedCommand}" Content="Remove selected" HorizontalAlignment="Left" Margin="10,-10,0,0" VerticalAlignment="Top" Width="141" Height="37" Background="#1E1E1E" Foreground="White" FontFamily="HP Simplified Jpan" FontSize="16" Grid.Row="1">
             <Button.Resources>
                 <Style TargetType="{x:Type Border}">
                     <Setter Property="CornerRadius" Value="14"/>

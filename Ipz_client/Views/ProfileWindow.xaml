@@ -69,7 +69,7 @@
         <Label Content="Country" Foreground="White" FontSize="17" HorizontalAlignment="Left" Margin="451,150,0,0" VerticalAlignment="Top" FontFamily="Bookman Old Style" FontStyle="Italic" Height="36" Width="93"/>
         <Label Content="City" Foreground="White" FontSize="17" HorizontalAlignment="Left" Margin="111,207,0,0" VerticalAlignment="Top" FontFamily="Bookman Old Style" FontStyle="Italic" Height="36" Width="60"/>
         <Label Content="Street" Foreground="White" FontSize="17" HorizontalAlignment="Left" Margin="451,207,0,0" VerticalAlignment="Top" FontFamily="Bookman Old Style" FontStyle="Italic" Height="36" Width="60"/>
-        <Button x:Name="Accept" Command="{Binding UpdateProfileCommand}" Content="Save" HorizontalAlignment="Left" VerticalAlignment="Top" Width="144" Height="38" Background="#1E1E1E" Foreground="White" FontFamily="HP Simplified Jpan" FontSize="24" Grid.Row="1" Margin="272,25,0,0"  >
+        <Button x:Name="Accept" Command="{Binding UpdateProfileCommand}" Content="Save" HorizontalAlignment="Left" VerticalAlignment="Top" Width="144" Height="38" Background="#1E1E1E" Foreground="White" FontFamily="HP Simplified Jpan" FontSize="24" Grid.Row="1" Margin="272,-20,0,0"  >
             <Button.Resources>
                 <Style TargetType="{x:Type Border}">
                     <Setter Property="CornerRadius" Value="14"/>

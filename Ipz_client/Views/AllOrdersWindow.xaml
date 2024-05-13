@@ -45,7 +45,7 @@
         <ListBox 
             ItemsSource="{Binding Orders}" 
             SelectedItem="{Binding SelectedOrder}"
-            Margin="0,85,335,-7" 
+            Margin="0,85,335,0" 
             Grid.RowSpan="2" 
             Foreground="White" 
             Background="{x:Null}"/>
