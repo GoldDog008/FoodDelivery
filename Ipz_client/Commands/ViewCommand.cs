@@ -16,6 +16,7 @@ namespace Ipz_client.Commands
         private RegistrationViewModel _registrationViewModel;
         private NewOrderViewModel _newOrderViewModel;
         private ProfileViewModel _profileViewModel;
+        private AllOrdersViewModel _allOrdersViewModel;
 
         public ViewCommand(LoginViewModel loginViewModel)
         {
@@ -32,6 +33,10 @@ namespace Ipz_client.Commands
         public ViewCommand(ProfileViewModel profileViewModel)
         {
             _profileViewModel = profileViewModel;
+        }
+        public ViewCommand(AllOrdersViewModel allOrdersViewModel)
+        {
+            _allOrdersViewModel = allOrdersViewModel;
         }
         public bool CanExecute(object parameter)
         {
@@ -57,6 +62,10 @@ namespace Ipz_client.Commands
                         _profileViewModel.SelectedViewModel = new NewOrderViewModel();
                         break;
                     }
+                    else if (_allOrdersViewModel != null)
+                    {
+                        _allOrdersViewModel.SelectedViewModel = new NewOrderViewModel();
+                    }
                     break;
 
                 case "Profile":
@@ -73,6 +82,22 @@ namespace Ipz_client.Commands
                     else if (_newOrderViewModel != null)
                     {
                         _newOrderViewModel.SelectedViewModel = new ProfileViewModel();
+                        break;
+                    }
+                    else if (_allOrdersViewModel != null)
+                    {
+                        _allOrdersViewModel.SelectedViewModel = new ProfileViewModel();
+                    }
+                    break;
+                case "AllOrders":
+                    if (_profileViewModel != null)
+                    {
+                        _profileViewModel.SelectedViewModel = new AllOrdersViewModel();
+                        break;
+                    }
+                    else if (_newOrderViewModel != null)
+                    {
+                        _newOrderViewModel.SelectedViewModel = new AllOrdersViewModel();
                         break;
                     }
                     break;

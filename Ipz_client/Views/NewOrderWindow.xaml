@@ -48,10 +48,10 @@
             </Grid>
         </Border>
 
-        <Menu Background="LightGray" Margin="0,25,496,279">
+        <Menu Background="Transparent" Margin="0,25,496,279" Foreground="White">
             <MenuItem Header="Profile" Command="{Binding UpdateViewCommand}" CommandParameter="Profile"/>
             <MenuItem Header="Make an order"/>
-            <MenuItem Header="All orders" Command="{Binding UpdateViewCommand}" CommandParameter="All orders"/>
+            <MenuItem Header="All orders" Command="{Binding UpdateViewCommand}" CommandParameter="AllOrders"/>
         </Menu>
 
         <design:OutlinedTextBlock Text="Make an order" StrokeThickness="2" Fill="White" Stroke="Red" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="237,55,0,0"/>
@@ -104,6 +104,5 @@
         <ComboBox HorizontalAlignment="Center" VerticalAlignment="Top" Width="164" Height="26" VerticalContentAlignment="Center" Margin="0,187,0,0">
             <ComboBoxItem IsSelected="True" FontStyle="Italic" Foreground="#FF8D8585" Content="Dish"/>
         </ComboBox>
-        <ContentControl Content="{Binding SelectedViewModel}"/>
     </Grid>
 </UserControl>
