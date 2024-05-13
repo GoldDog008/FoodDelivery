@@ -18,6 +18,8 @@
 
   <ItemGroup>
     <None Remove="images\.jpg" />
+    <None Remove="images\addnewdish_background.jpg" />
+    <None Remove="images\addnewrastaraunt_background.jpg" />
     <None Remove="images\allorders_background.jpg" />
     <None Remove="images\login_background.jpg" />
     <None Remove="images\newOrder_background.jpg" />
@@ -40,6 +42,12 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Resource Include="images\addnewdish_background.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="images\addnewrastaraunt_background.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
     <Resource Include="images\allorders_background.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>

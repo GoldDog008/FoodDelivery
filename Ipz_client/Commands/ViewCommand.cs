@@ -17,6 +17,8 @@ namespace Ipz_client.Commands
         private NewOrderViewModel _newOrderViewModel;
         private ProfileViewModel _profileViewModel;
         private AllOrdersViewModel _allOrdersViewModel;
+        private AddNewRestaurantViewModel _addNewRestaurantViewModel;
+        private AddNewDishViewModel _addNewDishViewModel;
 
         public ViewCommand(LoginViewModel loginViewModel)
         {
@@ -37,6 +39,14 @@ namespace Ipz_client.Commands
         public ViewCommand(AllOrdersViewModel allOrdersViewModel)
         {
             _allOrdersViewModel = allOrdersViewModel;
+        }
+        public ViewCommand(AddNewRestaurantViewModel addNewRestaurantViewModel)
+        {
+            _addNewRestaurantViewModel = addNewRestaurantViewModel;
+        }
+        public ViewCommand(AddNewDishViewModel addNewDishViewModel)
+        {
+            _addNewDishViewModel = addNewDishViewModel;
         }
         public bool CanExecute(object parameter)
         {
@@ -100,6 +110,12 @@ namespace Ipz_client.Commands
                         _newOrderViewModel.SelectedViewModel = new AllOrdersViewModel();
                         break;
                     }
+                    break;
+                case "NewRestaraunt":
+                    _addNewDishViewModel.SelectedViewModel = new AddNewRestaurantViewModel();
+                    break;
+                case "NewDish":
+                    _addNewRestaurantViewModel.SelectedViewModel = new AddNewDishViewModel();
                     break;
             }
         }

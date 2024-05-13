@@ -14,7 +14,7 @@ namespace Ipz_client
 
             MainWindow mainWindow = new MainWindow();
 
-            mainWindow.Content = new ProfileWindow();  
+            mainWindow.Content = new AddNewRestaurantWindow();  
 
             mainWindow.Title = "Главное окно";
             mainWindow.Show();

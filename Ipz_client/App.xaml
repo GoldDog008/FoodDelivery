@@ -21,6 +21,12 @@
         <DataTemplate DataType="{x:Type viewmodels:AllOrdersViewModel}">
             <view:AllOrdersWindow/>
         </DataTemplate>
+        <DataTemplate DataType="{x:Type viewmodels:AddNewRestaurantViewModel}">
+            <view:AddNewRestaurantWindow/>
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type viewmodels:AddNewDishViewModel}">
+            <view:AddNewDishWindow/>
+        </DataTemplate>
 
     </Application.Resources>
 </Application>
