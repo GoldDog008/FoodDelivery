@@ -53,7 +53,7 @@
             <MenuItem Header="Make an order"/>
             <MenuItem Header="All orders" Command="{Binding UpdateViewCommand}" CommandParameter="AllOrders"/>
         </Menu>
-        
+
         <design:OutlinedTextBlock Text="Make an order" StrokeThickness="2" Fill="White" Stroke="Red" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="237,55,0,0"/>
         <TextBox x:Name="TOTALPRICE" Text="{Binding TotalPrice}" IsReadOnly="True" HorizontalAlignment="Center" TextWrapping="Wrap" VerticalAlignment="Top" Width="112" Height="26" Margin="0,238,0,0" TextAlignment="Center"/>
         <TextBlock Text="TOTAL PRICE" VerticalAlignment="Top" HorizontalAlignment="Center" Padding="10,0,0,0" Margin="0,243,0,0" Foreground="#FF8D8585" FontStyle="Italic" Width="84" IsHitTestVisible="False">
@@ -122,6 +122,15 @@
         </ComboBox>
 
         <ListBox Margin="175,280,175,0" Grid.RowSpan="2" Background="Transparent" Foreground="White"/>
+
+        <Button x:Name="MakeOrder" Content="Make Order" HorizontalAlignment="Left" Margin="553,34,0,0" VerticalAlignment="Top" Width="141" Height="37" Background="#1E1E1E" Foreground="White" FontFamily="HP Simplified Jpan" FontSize="16" Grid.Row="1">
+            <Button.Resources>
+                <Style TargetType="Border">
+                    <Setter Property="CornerRadius" Value="14"/>
+                </Style>
+            </Button.Resources>
+        </Button>
+
         <!--<ContentControl Content="{Binding SelectedViewModel}"/>-->
     </Grid>
 </UserControl>
