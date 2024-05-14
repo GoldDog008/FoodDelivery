@@ -236,6 +236,12 @@ namespace Ipz_client.ViewModel
                 return;
             }
 
+            if (Quantity > 99 || Quantity < 1)
+            {
+                MessageBox.Show("Quantity must be between 1..99");
+                return;
+            }
+
             var OrderInformationsRequest = new List<OrderInformationCreateRequestDto>();
 
             foreach (var orderInformation in OrderInformations)

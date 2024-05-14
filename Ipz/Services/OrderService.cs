@@ -113,8 +113,8 @@ namespace Ipz_server.Services
                                 .Include(x => x.Dishes)
                                 .FirstOrDefaultAsync(r => r.RestaurantId == request.RestaurantId);
 
-            var isDishesExistsInRestaurant = restaurant.Dishes
-                .All(d => request.OrderInformations.Select(d => d.DishId).Contains(d.DishId));
+            var isDishesExistsInRestaurant = request.OrderInformations
+                .All(x => restaurant.Dishes.Select(d => d.DishId).Contains(x.DishId));
 
             if (!isDishesExistsInRestaurant)
             {
