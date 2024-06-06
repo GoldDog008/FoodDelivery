@@ -81,5 +81,7 @@ namespace Ipz_client.ViewModel
                 MessageBox.Show(apiResponse.Errors.First());
             }
         }
+
+
     }
 }

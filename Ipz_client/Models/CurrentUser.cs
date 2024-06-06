@@ -43,7 +43,7 @@ namespace Ipz_client.Models
             City = user.City;
             Street = user.Street;
         }
-        public static string GetRoleFromToken(string token)
+        public static string? GetRoleFromToken(string token)
         {
             var handler = new JwtSecurityTokenHandler();
             var jwtSecurityToken = handler.ReadJwtToken(token);

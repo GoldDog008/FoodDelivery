@@ -70,7 +70,7 @@
         <Label Content="Passwort" HorizontalAlignment="Left" Margin="465,227,0,0" VerticalAlignment="Top" Foreground="White" FontFamily="Bookman Old Style" FontStyle="Italic" FontSize="12" Height="27" Width="107" RenderTransformOrigin="0.482,0.812"/>
         <Label Content="Re-enter Passwort" HorizontalAlignment="Left" Margin="465,278,0,0" VerticalAlignment="Top" Foreground="White" FontFamily="Bookman Old Style" FontStyle="Italic" FontSize="12" Height="27" Width="172" RenderTransformOrigin="0.482,0.812"/>
 
-        <Button x:Name="SignUp" Command="{Binding RegistrationCommand}" Content="Sign up" HorizontalAlignment="Left" Margin="442,347,0,0" VerticalAlignment="Top" Width="218" Height="33" Background="#1E1E1E" Foreground="White" FontFamily="HP Simplified Jpan" FontSize="16">
+        <Button x:Name="SignUp" Command="{Binding RegistrationCommand}" Content="Sign up" HorizontalAlignment="Left" Margin="442,347,0,0" VerticalAlignment="Top" Width="218" Height="33" Background="#1E1E1E" Foreground="White" FontFamily="HP Simplified Jpan" FontSize="13" BorderThickness="0">
             
             <Button.CommandParameter>
                 <MultiBinding Converter="{StaticResource PassThroughConverter}">
@@ -85,7 +85,7 @@
                 </Style>
             </Button.Resources>
         </Button>
-        <Button x:Name="Back" Content="Back" HorizontalAlignment="Left" Margin="615,30,0,0" VerticalAlignment="Top" Width="75" Height="28" Background="#1E1E1E" Foreground="White" FontFamily="HP Simplified Jpan" FontSize="16" Command="{Binding UpdateViewCommand}" CommandParameter="Login">
+        <Button x:Name="Back" Content="Back" HorizontalAlignment="Left" Margin="615,30,0,0" VerticalAlignment="Top" Width="75" Height="28" Background="#1E1E1E" Foreground="White" FontFamily="HP Simplified Jpan" FontSize="13" Command="{Binding UpdateViewCommand}" CommandParameter="Login" BorderThickness="0.2">
             <Button.Resources>
                 <Style TargetType="Border">
                     <Setter Property="CornerRadius" Value="14"/>

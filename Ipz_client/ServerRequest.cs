@@ -4,8 +4,10 @@ using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 using System.Net.Http;
 using System.Reflection;
+using System.Security.Authentication;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -26,11 +28,11 @@ namespace Ipz_client
                     client.DefaultRequestHeaders.Add("Authorization", "Bearer " + CurrentUser.AccessToken);
                     HttpResponseMessage response;
 
-                    if (requestType.ToLower() == "post") 
+                    if (requestType.ToLower() == "post")
                     {
                         response = await client.PostAsync(url, content);
                     }
-                    else if(requestType.ToLower() == "get")
+                    else if (requestType.ToLower() == "get")
                     {
                         response = await client.GetAsync(url);
                     }
@@ -46,7 +48,7 @@ namespace Ipz_client
                     {
                         throw new ArgumentException("Invalid request type");
                     }
-                    
+
                     var jsonApiResponse = await response.Content.ReadAsStringAsync();
                     return JsonConvert.DeserializeObject<ApiResponse>(jsonApiResponse);
                 }
@@ -62,5 +64,7 @@ namespace Ipz_client
                 return null;
             }
         }
+
+
     }
 }

@@ -32,21 +32,20 @@
             </Grid>
         </Border>
 
-        <Menu Background="Transparent" Margin="0,25,496,279" Foreground="White">
-            <MenuItem Header="Profile" Command="{Binding UpdateViewCommand}" CommandParameter="Profile"/>
-            <MenuItem Header="Make an order" Command="{Binding UpdateViewCommand}" CommandParameter="NewOrder"/>
-            <MenuItem Header="All orders"/>
+        <Menu Background="Transparent" Margin="246,0,246,10" Grid.Row="1">
+            <MenuItem Header="Profile" Foreground="Red" Command="{Binding UpdateViewCommand}" CommandParameter="Profile"/>
+            <MenuItem Header="Make an order" Command="{Binding UpdateViewCommand}" CommandParameter="NewOrder" Foreground="White"/>
+            <MenuItem Header="All orders" Foreground="Red"/>
         </Menu>
         <Menu x:Name="AdminMenu" Background="Transparent" Margin="541,25,0,311" Foreground="White">
             <MenuItem Header="New restaurant" Command="{Binding UpdateViewCommand}" CommandParameter="NewRestaraunt"/>
             <MenuItem Header="New dish" Command="{Binding UpdateViewCommand}" CommandParameter="NewDish"/>
         </Menu>
-        <design:OutlinedTextBlock Text="All orders" StrokeThickness="2" Fill="White" Stroke="Red" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="248,47,0,0"/>
+        <design:OutlinedTextBlock Text="All orders" StrokeThickness="2" Fill="White" Stroke="Red" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="248,40,0,0"/>
         <ListBox 
             ItemsSource="{Binding Orders}" 
             SelectedItem="{Binding SelectedOrder}"
-            Margin="0,85,335,0" 
-            Grid.RowSpan="2" 
+            Margin="0,85,335,10" 
             Foreground="White" 
             Background="{x:Null}"/>
         <TextBlock HorizontalAlignment="Left" Margin="380,85,0,0" TextWrapping="Wrap" Text="{Binding OrderInfo}" VerticalAlignment="Top" Height="227" Width="310" Foreground="White"/>
